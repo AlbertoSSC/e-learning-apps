@@ -1,0 +1,9 @@
+{
+  "activityId": "drag and drop ID",
+  "type": "drag-and-drop",
+  "status": "in-progress",
+
+  "id": "1",
+  "sentences": ["Hueso", "Corazón", "Perro"],
+  "images": ["🦴", "❤️", "🐶"]
+}

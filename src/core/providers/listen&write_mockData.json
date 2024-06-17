@@ -1,0 +1,37 @@
+{
+	"activityId": "listen and write ID",
+	"title": "Listen and Write activity",
+	"type": "listen-and-write",
+	"status": "in-progress",
+	"audioList": [
+		{
+			"id": "1",
+			"audioUrl": "src/common/components/activities/listen-and-write/assets/audios/cuantocuesta.m4a",
+			"correctAnswers": [
+				"¿Cuánto cuesta?"
+			]
+		},
+		{
+			"id": "2",
+			"audioUrl": "src/common/components/activities/listen-and-write/assets/audios/lacuentaporfavor.m4a",
+			"correctAnswers": [
+				"La cuenta por favor"
+			]
+		},
+		{
+			"id": "3",
+			"audioUrl": "src/common/components/activities/listen-and-write/assets/audios/muchasgracias.m4a",
+			"correctAnswers": [
+				"Muchas gracias"
+			]
+		},
+		{
+			"id": "4",
+			"audioUrl": "src/common/components/activities/listen-and-write/assets/audios/dondeestaelbaño.m4a",
+			"correctAnswers": [
+				"¿Dónde está el baño?"
+			]
+		}
+	],
+	"Transform": "AWS::Serverless-2016-10-31"
+}

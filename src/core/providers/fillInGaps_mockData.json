@@ -1,0 +1,40 @@
+{
+  "activityId": "fill in gaps ID",
+  "type": "fillInGaps",
+  "title": "Fill in the gaps",
+  "sentenceList": [
+    {
+      "id": "1",
+      "sentence": "Hola ¡___ días!",
+      "gaps": [
+        {
+          "options": ["Buenos"]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "sentence": "La ___ es redonda.",
+      "gaps": [
+        {
+          "options": ["Tierra"]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "sentence": "En un ___ de la Mancha, de cuyo ___ no quiero ___",
+      "gaps": [
+        {
+          "options": ["lugar"]
+        },
+        {
+          "options": ["nombre"]
+        },
+        {
+          "options": ["acordarme"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "activityId": "1",
+  "type": "test-question",
+  "status": "in-progress",
+  "title": "Prueba de vocabulario",
+  "sentenceList": [
+    {
+      "id": "1",
+      "sentence": "El __ es un animal mamífero.",
+      "options": ["perro", "lata", "goma"],
+      "correctAnswer": "perro"
+    },
+    {
+      "id": "2",
+      "sentence": "Mi color favorito es el __.",
+      "options": ["oso", "azul", "planta"],
+      "correctAnswer": "azul"
+    }
+  ],
+  "tag": "gramática"
+}

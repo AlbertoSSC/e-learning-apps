@@ -1,0 +1,37 @@
+{
+  "activityId": "card listen ID",
+  "type": "card-text",
+  "status": "pending",
+  "cardTextList": [
+    {
+      "id": "1",
+      "image": {
+        "name": "persona-saludando",
+        "url": "/src/common/components/activities/card-listen/assets/images/hello.jpeg"
+      },
+      "audioUrl": "/src/common/components/activities/card-listen/assets/audios/hola-buenos-dias.m4a",
+      "spanishText": "Hola, buenos días",
+      "englishText": "Hello, good morning"
+    },
+    {
+      "id": "2",
+      "image": {
+        "name": "persona saludando 02",
+        "url": "/src/common/components/activities/card-listen/assets/images/comoestas.jpeg"
+      },
+      "audioUrl": "/src/common/components/activities/card-listen/assets/audios/como-estas.m4a",
+      "spanishText": "¿Cómo estas?",
+      "englishText": "How are you?"
+    },
+    {
+      "id": "3",
+      "image": {
+        "name": "persona saludando 03",
+        "url": "/src/common/components/activities/card-listen/assets/images/muybiengracias.jpeg"
+      },
+      "audioUrl": "/src/common/components/activities/card-listen/assets/audios/muy-bien-y-tu.m4a",
+      "spanishText": "Muy bien ¿y tú?",
+      "englishText": "Great, and you?"
+    }    
+  ]
+}
