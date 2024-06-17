@@ -3,13 +3,13 @@ import React from 'react';
 import { TextField, Typography } from '@mui/material';
 
 import { FillInGapSentence } from '@/core';
-import * as innerClasses from '../fill-in-gaps.sytles';
+import { innerClasses, activityRow } from '../fill-in-gaps.styles';
 
 interface Props {
   item: FillInGapSentence;
   sentenceIndex: number;
-  isCorrectAnswers: boolean[][];
-  inputsValues: string[][];
+  isCorrectAnswers: boolean[];
+  inputsValues: string[];
   setInputsValues: React.Dispatch<React.SetStateAction<string[][]>>;
 }
 
@@ -21,7 +21,7 @@ export const GapActivityRow: React.FC<Props> = ({
   setInputsValues,
 }) => {
   return (
-    <div id={`activity-row-${item.id}`} css={innerClasses.activityRow}>
+    <div id={`activity-row-${item.id}`} css={activityRow}>
       {item.sentence.split('___').map((textPiece, index) => (
         <React.Fragment key={`textPiece-${index}`}>
           <Typography color="text.primary">{textPiece}</Typography>
@@ -36,7 +36,7 @@ export const GapActivityRow: React.FC<Props> = ({
               variant="filled"
               type="text"
               id={`gap-input-${item.id}`}
-              value={inputsValues[sentenceIndex][index] || ''}
+              value={inputsValues[index] || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setInputsValues(prev => {
                   const newValue = [...prev];
@@ -45,19 +45,15 @@ export const GapActivityRow: React.FC<Props> = ({
                 });
               }}
               color={
-                isCorrectAnswers[sentenceIndex] &&
-                isCorrectAnswers[sentenceIndex][index] === true
+                isCorrectAnswers && isCorrectAnswers[index] === true
                   ? 'success'
                   : 'primary'
               }
-              error={
-                isCorrectAnswers[sentenceIndex] &&
-                isCorrectAnswers[sentenceIndex][index] === false
-              }
+              error={isCorrectAnswers && isCorrectAnswers[index] === false}
               helperText={
-                isCorrectAnswers[sentenceIndex] &&
-                (isCorrectAnswers[sentenceIndex][index] === true ||
-                  isCorrectAnswers[sentenceIndex][index] === false)
+                isCorrectAnswers &&
+                (isCorrectAnswers[index] === true ||
+                  isCorrectAnswers[index] === false)
                   ? `Respuesta: ${item.gaps[index]?.options[0]}`
                   : ''
               }

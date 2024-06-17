@@ -1,9 +1,9 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
-import { Typography } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { Typography } from '@mui/material';
+import { blue } from '@mui/material/colors';
 
-import * as innerClasses from "../drag-drop.styles";
+import * as innerClasses from '../drag-drop.styles';
 
 interface Props {
   index: number;
@@ -30,22 +30,18 @@ export const SenteceToDrop: React.FC<Props> = ({
     ${validated === null
       ? blue[700]
       : validated === index
-      ? " green"
-      : " crimson"};
+      ? ' green'
+      : ' crimson'};
   `;
 
   return (
     <div id={`sentence-text-${index}`} css={innerClasses.sentenceText}>
-      <Typography component="span">{sentence}</Typography>
+      <Typography variant="h6">{sentence}</Typography>
 
       <div
         id={`sentence-droppable-box-${index}`}
-        css={innerClasses.validationStyle(
-          borderStyle,
-          activeBoxIndex,
-          index
-        )}
-        onDragOver={(e) => onDragOver(e, index)}
+        css={innerClasses.validationStyle(borderStyle, activeBoxIndex, index)}
+        onDragOver={e => onDragOver(e, index)}
         onDragLeave={onDragLeave}
         onDrop={() => onDrop(index)}
       >
