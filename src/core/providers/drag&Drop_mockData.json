@@ -4,6 +4,6 @@
   "status": "in-progress",
 
   "id": "1",
-  "sentences": ["Hueso", "Corazón", "Perro"],
-  "images": ["🦴", "❤️", "🐶"]
+  "sentences": ["Hueso", "Corazón", "Perro", "Árbol", "Manzana", "Cerveza"],
+  "images": ["🦴", "❤️", "🐶", "🌳", "🍏", "🍺"]
 }

@@ -5,16 +5,16 @@ import { List, ListItem } from '@mui/material';
 import * as innerClasses from '../drag-drop.styles';
 
 interface Props {
-  shuffleImages: string[];
-  onDragStart: (image: string) => void;
+  images: string[];
+  handleDragStart: (image: string) => void;
 }
 
 export const ImageListComponent: React.FC<Props> = props => {
-  const { shuffleImages, onDragStart } = props;
+  const { images, handleDragStart } = props;
 
   return (
     <List id="image-list" component="ul" css={innerClasses.imageContainer}>
-      {shuffleImages.map((image, index) => (
+      {images.map((image, index) => (
         <ListItem
           id={`image-${index}`}
           key={`dndImage-${index}`}
@@ -22,7 +22,7 @@ export const ImageListComponent: React.FC<Props> = props => {
           css={innerClasses.listItemImage}
           draggable="true"
           onDragStart={() => {
-            onDragStart(image);
+            handleDragStart(image);
           }}
         >
           {image}
