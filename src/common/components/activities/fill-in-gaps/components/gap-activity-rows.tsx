@@ -54,7 +54,7 @@ export const GapActivityRow: React.FC<Props> = ({
                 isCorrectAnswers &&
                 (isCorrectAnswers[index] === true ||
                   isCorrectAnswers[index] === false)
-                  ? `Respuesta: ${item.gaps[index]?.options[0]}`
+                  ? `${item.gaps[index]?.options[0]}`
                   : ''
               }
             />

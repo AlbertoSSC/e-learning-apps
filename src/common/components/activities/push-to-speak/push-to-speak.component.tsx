@@ -1,14 +1,18 @@
 import React from 'react';
 
-import { SerializedStyles } from '@emotion/react';
 import { Pagination } from '@mui/material';
 
 import { PushToSpeakActivity } from '@/core';
-import CardComponent from './card';
+import CardComponent from './components/card';
 import { SpeechRecognition, voiceRecognition } from './push-to-speak.helper';
 
-import * as innerClasses from './push-to-speak.styles';
-import { activityContainer, paginationStyle } from '@/styles/activity.style';
+import {
+  activityContainer,
+  activityContent,
+  activityContentSlider,
+  cardStyle,
+  paginationStyle,
+} from '@/styles/activity.style';
 
 interface PushToSpeak {
   activity: PushToSpeakActivity;
@@ -16,10 +20,9 @@ interface PushToSpeak {
 
 export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
   const [currentCard, setCurrentCard] = React.useState(0);
+
   const [spokenText, setSpokenText] = React.useState('');
   const [isListening, setIsListening] = React.useState<boolean>(false);
-  const [animationClass, setAnimationClass] =
-    React.useState<SerializedStyles>();
 
   const recognitionRef = React.useRef<SpeechRecognition | null>(null);
 
@@ -48,48 +51,40 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
     _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    setAnimationClass(innerClasses.cardExit);
     setSpokenText('');
-
-    setTimeout(() => {
-      setCurrentCard(value - 1);
-      setAnimationClass(innerClasses.cardEnter);
-    }, 200);
+    setCurrentCard(value - 1);
   };
 
   const imageList = activity.imageList;
 
   return (
-    <div
-      id="activity-container"
-      css={[activityContainer, innerClasses.fixedHeight]}
-    >
-      {activity.textList.map(
-        (text, index) =>
-          index === currentCard && (
-            <CardComponent
-              key={`${activity.activityId}-card-${index}`}
-              imageUrl={
-                imageList && imageList.length >= 1 ? imageList[index].url : ''
-              }
-              text={text}
-              handleSpeak={handleSpeak}
-              isListening={isListening}
-              handleStopClick={handleStopClick}
-              spokenText={spokenText}
-              animationClass={animationClass}
-            />
-          )
-      )}
-
-      <Pagination
-        css={paginationStyle}
-        siblingCount={0}
-        count={activity.textList.length}
-        page={currentCard + 1}
-        onChange={handlePageChange}
-        color="primary"
-      />
-    </div>
+    <article id="activity-container" css={activityContainer}>
+      <section css={[activityContent, activityContentSlider(currentCard)]}>
+        {activity.textList.map((text, index) => (
+          <CardComponent
+            key={`${activity.activityId}-card-${index}`}
+            imageUrl={
+              imageList && imageList.length >= 1 ? imageList[index].url : ''
+            }
+            text={text}
+            handleSpeak={handleSpeak}
+            isListening={isListening}
+            handleStopClick={handleStopClick}
+            spokenText={spokenText}
+            animationClass={cardStyle(index === currentCard)}
+          />
+        ))}
+      </section>
+      <section>
+        <Pagination
+          css={paginationStyle}
+          siblingCount={0}
+          count={activity.textList.length}
+          page={currentCard + 1}
+          onChange={handlePageChange}
+          color="primary"
+        />
+      </section>
+    </article>
   );
 };

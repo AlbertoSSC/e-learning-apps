@@ -15,6 +15,10 @@ export const innerClasses = {
 
   inputWidth: css`
     width: 100px;
+    & .MuiFormHelperText-root {
+      display: flex;
+      justify-content: center;
+    }
   `,
 };
 

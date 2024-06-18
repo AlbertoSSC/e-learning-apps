@@ -1,8 +1,4 @@
-import { css, keyframes } from '@emotion/react';
-
-export const fixedHeight = css`
-  justify-content: flex-end;
-`;
+import { css } from '@emotion/react';
 
 export const cardContainer = css`
   display: flex;
@@ -10,37 +6,8 @@ export const cardContainer = css`
   text-align: center;
   align-items: center;
 
+  min-width: fit-content;
   max-width: 250px;
-`;
-
-export const slideIn = keyframes`
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
-
-export const slideOut = keyframes`
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-`;
-
-export const cardEnter = css`
-  animation: ${slideIn} 0.3s ease-in-out;
-`;
-
-export const cardExit = css`
-  animation: ${slideOut} 0.3s ease-in-out;
 `;
 
 export const cardContent = css`

@@ -4,11 +4,13 @@ import { Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
 import { TestQuestionActivity } from '@/core';
-import { Question } from './question';
+import { Question } from './components/question';
+import { useTestQuestionState } from './hooks/use-test-question';
 
 import {
   activityContainer,
   activityContent,
+  activityContentSlider,
   correctionButton,
   repeatAndCorrectButtons,
 } from '@/styles/activity.style';
@@ -21,42 +23,14 @@ export interface TestQuestionComponentProps {
 export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
   activity,
 }) => {
-  const [values, setValues] = React.useState<string[]>(
-    new Array(activity.sentenceList.length).fill('')
-  );
-
-  const [answersCorrection, setAnswersCorrection] = React.useState<
-    (boolean | undefined)[]
-  >(new Array(activity.sentenceList.length).fill(undefined));
-
-  const [helpertext, setHelpertext] = React.useState(false);
-
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const newValues = [...values];
-    newValues[index] = event.target.value;
-    setValues(newValues);
-    setAnswersCorrection(prev => [...prev, (prev[index] = undefined)]);
-  };
-
-  const handleValidation = () => {
-    const newAnswerCorretion = values.map((value, index) => {
-      const correctAnswer = activity.sentenceList[index].correctAnswer;
-      return correctAnswer === value;
-    });
-    setAnswersCorrection(newAnswerCorretion);
-    setHelpertext(true);
-  };
-
-  const handleReset = () => {
-    setValues(new Array(activity.sentenceList.length).fill(''));
-    setAnswersCorrection(
-      new Array(activity.sentenceList.length).fill(undefined)
-    );
-    setHelpertext(false);
-  };
+  const {
+    values,
+    answersCorrection,
+    helpertext,
+    handleChange,
+    handleValidation,
+    handleReset,
+  } = useTestQuestionState(activity);
 
   const correctionColorStyle = (index: number): string => {
     if (answersCorrection[index] === true) return 'green';

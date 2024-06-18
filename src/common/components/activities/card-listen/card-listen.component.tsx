@@ -1,13 +1,17 @@
 import React from 'react';
-import { SerializedStyles } from '@emotion/react';
+
 import { Pagination } from '@mui/material';
 
 import { CardTextActivity } from '@/core/models';
 import { CardComponent } from './components/card';
 
-import * as innerClasses from './card-listen.style';
-import { cardExit, cardEnter } from './card-listen.style';
-import { activityContainer, paginationStyle } from '@/styles/activity.style';
+import {
+  activityContainer,
+  activityContent,
+  activityContentSlider,
+  cardStyle,
+  paginationStyle,
+} from '@/styles/activity.style';
 
 interface Props {
   media: CardTextActivity;
@@ -16,32 +20,24 @@ interface Props {
 export const CardListenComponent: React.FC<Props> = props => {
   const { media } = props;
 
-  const [animationClass, setAnimationClass] =
-    React.useState<SerializedStyles>();
-
+  const [currentCard, setCurrentCard] = React.useState(0);
   const [page, setPage] = React.useState(1);
 
   const handleChangePage = (
     _event: React.ChangeEvent<unknown>,
-    newPage: number
+    value: number
   ) => {
-    setAnimationClass(cardExit);
-
-    setTimeout(() => {
-      setPage(newPage);
-      setAnimationClass(cardEnter);
-    }, 200);
+    setPage(value);
+    setCurrentCard(value - 1);
   };
 
-  const currentCards = media.cardTextList.slice(page - 1, page);
-
   return (
-    <article css={[activityContainer, innerClasses.fixedHeight]}>
-      <section>
-        {currentCards.map(card => (
+    <article css={activityContainer}>
+      <section css={[activityContent, activityContentSlider(currentCard)]}>
+        {media.cardTextList.map((card, index) => (
           <CardComponent
             card={card}
-            animationClass={animationClass}
+            animationClass={cardStyle(index === currentCard)}
             key={card.id}
           />
         ))}

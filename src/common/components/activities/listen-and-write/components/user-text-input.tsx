@@ -42,7 +42,17 @@ export const UserTextInput: React.FC<Props> = props => {
       onChange={handleNewInput}
       color={isCorrectAnswer === true ? 'success' : 'primary'}
       error={isCorrectAnswer === false}
-      helperText={isCorrectSpanStyle ? `Respuesta: ${correctAnswers[0]}` : ''}
+      helperText={isCorrectSpanStyle ? `${correctAnswers[0]}` : ''}
+      sx={{
+        '& .MuiFormHelperText-root': {
+          color:
+            isCorrectAnswer === true
+              ? 'green'
+              : isCorrectAnswer === false
+              ? 'red'
+              : 'inherit',
+        },
+      }}
     />
   );
 };

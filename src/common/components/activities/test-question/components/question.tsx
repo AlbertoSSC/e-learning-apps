@@ -11,7 +11,7 @@ import {
 
 import { TestQuestions } from '@/core';
 
-import * as innerClasses from './test-question.styles';
+import * as innerClasses from '../test-question.styles';
 
 interface Props {
   sentence: TestQuestions;

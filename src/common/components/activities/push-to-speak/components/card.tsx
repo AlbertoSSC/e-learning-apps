@@ -12,7 +12,7 @@ import {
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 
-import * as innerClasses from './push-to-speak.styles';
+import * as innerClasses from '../push-to-speak.styles';
 import { SerializedStyles } from '@emotion/react';
 
 interface CardComponentProps {
