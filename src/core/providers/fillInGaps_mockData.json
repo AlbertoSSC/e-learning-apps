@@ -23,7 +23,7 @@
     },
     {
       "id": "3",
-      "sentence": "En un ___ de la Mancha, de cuyo ___ no quiero ___",
+      "sentence": "En un ___ de la Mancha, de cuyo ___ no quiero ___.",
       "gaps": [
         {
           "options": ["lugar"]

@@ -13,7 +13,7 @@ import {
   activityContent,
   correctionButton,
   repeatAndCorrectButtons,
-} from '@/styles/activity.style';
+} from '@/styles';
 import * as innerClasses from './drag-drop.styles';
 
 export const DragAndDropComponent: React.FC<{

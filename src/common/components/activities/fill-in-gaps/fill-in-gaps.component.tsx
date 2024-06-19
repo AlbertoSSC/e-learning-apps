@@ -13,7 +13,7 @@ import {
   correctionButton,
   listNumbers,
   repeatAndCorrectButtons,
-} from '@/styles/activity.style';
+} from '@/styles';
 import { innerClasses, listItem } from './fill-in-gaps.styles';
 
 interface Props {

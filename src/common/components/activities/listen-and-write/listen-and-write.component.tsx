@@ -14,7 +14,7 @@ import {
   activityContent,
   correctionButton,
   repeatAndCorrectButtons,
-} from '@/styles/activity.style';
+} from '@/styles';
 
 interface Props {
   activity: ListenAndWriteActivity;

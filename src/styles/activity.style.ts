@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 
 export const activityContainer = css`
   display: flex;
@@ -8,58 +8,18 @@ export const activityContainer = css`
 
   overflow: hidden;
   border-radius: 4px;
-  padding: 2rem;
+  padding: 1.5rem;
 
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(220, 220, 220, 0.3);
   backdrop-filter: blur(10px);
 `;
 
 export const activityContent = css`
-  width: 100%;
-
+  max-width: -webkit-fill-available;
+  
   background-color: #fff;
   border-radius: 4px;
   transition: transform 0.5s ease-in-out;
-`;
-
-export const activityContentSlider = (currentCard: number) => css`
-  display: flex;
-  flex-direction: row;
-
-  background-color: transparent;
-
-  transform: translateX(${-currentCard * 100}%);
-`;
-
-const growAndFocus = keyframes`
-  0% {
-    transform: scale(0.8);
-    filter: blur(5px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    filter: blur(0);
-    opacity: 1;
-  }
-`;
-
-const shrinkAndBlur = keyframes`
-  0% {
-    transform: scale(1);
-    filter: blur(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.7);
-    filter: blur(5px);
-    opacity: 0.5;
-  }
-`;
-
-export const cardStyle = (isCurrent: boolean) => css`
-  animation: ${isCurrent ? growAndFocus : shrinkAndBlur} 0.5s ease-in-out
-    forwards;
 `;
 
 export const listNumbers = css`
@@ -85,18 +45,19 @@ export const correctionButton = css`
 `;
 
 export const paginationStyle = css`
-  padding: 2rem 2rem 1rem;
-  border-radius: 4px;
+  padding: 2rem 0rem 1rem;
 
   & .MuiPagination-ul {
     justify-content: center;
     & .MuiPaginationItem-root {
-      background: rgba(255, 255, 255, 1);
-      color: #242424;
       &.Mui-selected {
-        border: 4px solid grey;
-        background: rgba(255, 255, 255, 0.8);
+        border: 4px solid rgba(205, 205, 205, 0.5);
+        background: white;
       }
     }
   }
+`;
+
+export const paginationWidth = css`
+  width: max-content;
 `;

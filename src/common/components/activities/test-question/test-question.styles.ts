@@ -2,8 +2,7 @@ import { css } from '@emotion/react';
 
 export const testContainer = css`
   text-align: left;
-  padding: 3rem;
-  min-width: 350px;
+  padding: 1.5rem;
 `;
 
 export const questionContainer = css`

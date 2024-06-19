@@ -12,10 +12,11 @@ import {
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-import * as innerClasses from '../card-listen.style';
-
 import { AudioPlayer } from '@/common';
 import { CardText } from '@/core/models';
+
+import { cardActions, cardContainer, cardContent, cardMedia } from '@/styles';
+import * as innerClasses from '../card-listen.style';
 
 interface Props {
   card: CardText;
@@ -41,34 +42,34 @@ export const CardComponent: React.FC<Props> = ({ card, animationClass }) => {
   return (
     <Card
       variant="outlined"
-      id="cardContainer"
-      css={[innerClasses.cardContainer, animationClass]}
+      id="inner card Container"
+      css={[cardContainer, animationClass]}
     >
-      <CardContent id="cardContent" css={innerClasses.cardContent}>
+      <CardContent id="inner card Content" css={cardContent}>
         <CardMedia
           component="img"
           image={card.image.url}
-          alt={card.image.name}
-          css={innerClasses.cardMedia}
+          alt={`${card.image.name} image`}
+          css={cardMedia}
         />
-        <CardActions css={innerClasses.cardActions}>
+        <CardActions css={cardActions}>
           <AudioPlayer audioUrl={card.audioUrl} />
         </CardActions>
 
         {card.spanishText && (
           <>
-            <Typography variant="h6" color="text.secondary">
+            <Typography mb={2} variant="h5" color="text.secondary">
               {card.spanishText}
             </Typography>
 
-            <CardActions css={innerClasses.cardActions}>
+            <CardActions css={cardActions}>
               <Button
                 variant="contained"
                 onClick={e => handleClick(e, card.id)}
                 css={innerClasses.englishButton}
               >
                 <VisibilityIcon aria-label="visibility icon" />
-                <Typography component="span">English</Typography>
+                <Typography>English</Typography>
               </Button>
 
               <Popover

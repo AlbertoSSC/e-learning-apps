@@ -9,10 +9,11 @@ import { SpeechRecognition, voiceRecognition } from './push-to-speak.helper';
 import {
   activityContainer,
   activityContent,
-  activityContentSlider,
-  cardStyle,
   paginationStyle,
-} from '@/styles/activity.style';
+  activityContentCardSlider,
+  cardStyle,
+  paginationWidth,
+} from '@/styles';
 
 interface PushToSpeak {
   activity: PushToSpeakActivity;
@@ -59,7 +60,10 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
 
   return (
     <article id="activity-container" css={activityContainer}>
-      <section css={[activityContent, activityContentSlider(currentCard)]}>
+      <section
+        id="asdfasf"
+        css={[activityContent, activityContentCardSlider(currentCard)]}
+      >
         {activity.textList.map((text, index) => (
           <CardComponent
             key={`${activity.activityId}-card-${index}`}
@@ -75,16 +79,18 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
           />
         ))}
       </section>
-      <section>
-        <Pagination
-          css={paginationStyle}
-          siblingCount={0}
-          count={activity.textList.length}
-          page={currentCard + 1}
-          onChange={handlePageChange}
-          color="primary"
-        />
-      </section>
+
+      {activity.textList.length > 1 && (
+        <section css={paginationWidth}>
+          <Pagination
+            css={paginationStyle}
+            siblingCount={0}
+            count={activity.textList.length}
+            page={currentCard + 1}
+            onChange={handlePageChange}
+          />
+        </section>
+      )}
     </article>
   );
 };

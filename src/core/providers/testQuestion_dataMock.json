@@ -6,13 +6,13 @@
   "sentenceList": [
     {
       "id": "1",
-      "sentence": "El __ es un animal mamífero.",
+      "sentence": "El _____ es un animal mamífero.",
       "options": ["perro", "lata", "goma"],
       "correctAnswer": "perro"
     },
     {
       "id": "2",
-      "sentence": "Mi color favorito es el __.",
+      "sentence": "Mi color favorito es el _____.",
       "options": ["oso", "azul", "planta"],
       "correctAnswer": "azul"
     }

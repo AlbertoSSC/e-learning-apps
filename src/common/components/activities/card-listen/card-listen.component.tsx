@@ -8,10 +8,11 @@ import { CardComponent } from './components/card';
 import {
   activityContainer,
   activityContent,
-  activityContentSlider,
-  cardStyle,
   paginationStyle,
-} from '@/styles/activity.style';
+  paginationWidth,
+  activityContentCardSlider,
+  cardStyle,
+} from '@/styles';
 
 interface Props {
   media: CardTextActivity;
@@ -32,8 +33,11 @@ export const CardListenComponent: React.FC<Props> = props => {
   };
 
   return (
-    <article css={activityContainer}>
-      <section css={[activityContent, activityContentSlider(currentCard)]}>
+    <article id="activity container" css={activityContainer}>
+      <section
+        id="activity content"
+        css={[activityContent, activityContentCardSlider(currentCard)]}
+      >
         {media.cardTextList.map((card, index) => (
           <CardComponent
             card={card}
@@ -43,18 +47,17 @@ export const CardListenComponent: React.FC<Props> = props => {
         ))}
       </section>
 
-      <section>
-        {media.cardTextList.length > 1 && (
+      {media.cardTextList.length > 1 && (
+        <section css={paginationWidth}>
           <Pagination
             css={paginationStyle}
             siblingCount={0}
-            variant="outlined"
             count={media.cardTextList.length}
             page={page}
             onChange={handleChangePage}
           />
-        )}
-      </section>
+        </section>
+      )}
     </article>
   );
 };

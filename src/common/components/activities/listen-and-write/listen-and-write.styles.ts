@@ -1,19 +1,15 @@
 import { css } from '@emotion/react';
 
 export const inputsContainer = css`
-  padding: 2rem 1rem 2rem 0;
+  padding: 1rem 0;
 `;
 
 export const singleListenAndWrite = css`
   display: flex;
-  gap: 0.5rem;
-  margin: 24px;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
 
   input {
     padding: 16px;
     font-size: larger;
-  }
-
-  .MuiFormControl-root {
   }
 `;

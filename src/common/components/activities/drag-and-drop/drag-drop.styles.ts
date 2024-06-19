@@ -3,8 +3,9 @@ import { SerializedStyles, css } from '@emotion/react';
 export const DragDropContainer = css`
   display: flex;
   justify-content: space-around;
-  min-width: 350px;
-  padding: 2rem 0;
+  padding: 1.5rem;
+  width: -webkit-fill-available;
+  max-width: 400px;
 `;
 
 export const imageContainer = css`
@@ -23,11 +24,16 @@ export const sentenceText = css`
 export const listItemImage = css`
   &.MuiListItem-root {
     font-size: x-large;
+    padding: 0.5rem;
   }
 `;
 
 export const listItem = css`
   color: #242424;
+  &.MuiListItem-root {
+    font-size: x-large;
+    padding: 0.5rem;
+  }
   &.MuiListItemText-root {
     align-items: baseline;
   }
@@ -47,7 +53,6 @@ export const validationStyle = (
   border-width: 0px 0px 2px;
   border-bottom-color: ${borderStyle};
 
-  padding: 0.5rem;
   margin-left: 1rem;
 
   min-width: 3.5rem;

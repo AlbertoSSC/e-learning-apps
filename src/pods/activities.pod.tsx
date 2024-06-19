@@ -34,23 +34,27 @@ export const ActivitiesPod = () => {
               activity={testQuestionMock as TestQuestionActivity}
             />
           </section>
+
           <section css={innerClasse.podSectionsStyle}>
             <DragAndDropComponent
               activity={dragAndDropMock as DragAndDropActivity}
             />
           </section>
+
           <section css={innerClasse.podSectionsStyle}>
             <FillInGapsComponent
               activity={fillInGapsMock as FillInGapActivity}
             />
           </section>
+
+          <section css={innerClasse.podSectionsStyle}>
+            <CardListenComponent media={cardListenMock as CardTextActivity} />
+          </section>
+
           <section css={innerClasse.podSectionsStyle}>
             <PushToSpeakComponent
               activity={pushToSpeakMock as PushToSpeakActivity}
             />
-          </section>
-          <section css={innerClasse.podSectionsStyle}>
-            <CardListenComponent media={cardListenMock as CardTextActivity} />
           </section>
 
           <section css={innerClasse.podSectionsStyle}>

@@ -10,10 +10,9 @@ import { useTestQuestionState } from './hooks/use-test-question';
 import {
   activityContainer,
   activityContent,
-  activityContentSlider,
   correctionButton,
   repeatAndCorrectButtons,
-} from '@/styles/activity.style';
+} from '@/styles';
 import * as innerClasses from './test-question.styles';
 
 export interface TestQuestionComponentProps {

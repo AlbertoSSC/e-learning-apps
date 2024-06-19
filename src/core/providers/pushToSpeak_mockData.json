@@ -14,8 +14,20 @@
     {
       "name": "",
       "url": "src/common/components/activities/push-to-speak/assets/images/car.jpg"
+    },
+    {
+      "name": "",
+      "url": "src/common/components/activities/push-to-speak/assets/images/tongue.jpeg"
+    },
+    {
+      "name": "",
+      "url": "src/common/components/activities/push-to-speak/assets/images/hello.jpeg"
+    },
+    {
+      "name": "",
+      "url": "src/common/components/activities/push-to-speak/assets/images/car.jpg"
     }
   ],
-  "textList": ["Lengua", "Hola", "Coche"],
+  "textList": ["Lengua", "Hola", "Coche", "Lengua", "Hola", "Coche"],
   "tag": "greetings"
 }

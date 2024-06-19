@@ -10,7 +10,6 @@ export const innerClasses = {
   `,
 
   fixedWidth: css`
-    min-width: 350px;
   `,
 
   inputWidth: css`

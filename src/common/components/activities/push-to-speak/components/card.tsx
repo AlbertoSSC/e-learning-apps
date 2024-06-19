@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { SerializedStyles } from '@emotion/react';
+
 import {
   Card,
   CardContent,
@@ -7,13 +9,14 @@ import {
   Button,
   Divider,
   CardMedia,
+  CardActions,
 } from '@mui/material';
 
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
 
+import { cardActions, cardContainer, cardContent, cardMedia } from '@/styles';
 import * as innerClasses from '../push-to-speak.styles';
-import { SerializedStyles } from '@emotion/react';
 
 interface CardComponentProps {
   imageUrl: string;
@@ -38,33 +41,39 @@ const CardComponent: React.FC<CardComponentProps> = ({
     <Card
       variant="outlined"
       id="card-container"
-      css={[innerClasses.cardContainer, animationClass]}
+      css={[cardContainer, animationClass]}
     >
-      {imageUrl && (
+      <CardContent id="inner card Content" css={cardContent}>
         <CardMedia
-          css={innerClasses.cardMedia}
           component="img"
           image={imageUrl}
+          alt={`${text} image`}
+          css={cardMedia}
         />
-      )}
 
-      <CardContent id="card-content" css={innerClasses.cardContent}>
         <Typography m={3} variant="h5" color="text.secondary">
           {text}
         </Typography>
 
-        <Divider variant="middle" flexItem />
+        {spokenText && (
+          <>
+            <Divider variant="middle" flexItem />
+            <Typography m={1} variant="body1" css={innerClasses.spokenText}>
+              {spokenText}
+            </Typography>
+          </>
+        )}
 
-        {spokenText && <p css={innerClasses.spokenText}>{spokenText}</p>}
-
-        <Button
-          variant="contained"
-          startIcon={isListening ? <StopIcon /> : <MicIcon />}
-          color={!isListening ? 'primary' : 'error'}
-          onClick={isListening ? handleStopClick : handleSpeak}
-        >
-          {isListening ? `Escuchando...` : `Pulse para hablar`}
-        </Button>
+        <CardActions css={[cardActions, innerClasses.speakButton]}>
+          <Button
+            variant="contained"
+            startIcon={isListening ? <StopIcon /> : <MicIcon />}
+            color={!isListening ? 'primary' : 'error'}
+            onClick={isListening ? handleStopClick : handleSpeak}
+          >
+            {isListening ? `Escuchando...` : `Pulse para hablar`}
+          </Button>
+        </CardActions>
       </CardContent>
     </Card>
   );
