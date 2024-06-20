@@ -24,7 +24,9 @@ export const GapActivityRow: React.FC<Props> = ({
     <div id={`activity-row-${item.id}`} css={activityRow}>
       {item.sentence.split('___').map((textPiece, index) => (
         <React.Fragment key={`textPiece-${index}`}>
-          <Typography color="text.primary">{textPiece}</Typography>
+          <Typography component="span" color="text.primary">
+            {textPiece}
+          </Typography>
 
           {index < item.gaps.length && (
             <TextField
