@@ -32,7 +32,7 @@ export const FillInGapsComponent: React.FC<Props> = ({ activity }) => {
 
   return (
     <article css={activityContainer}>
-      <section css={[activityContent, innerClasses.fixedWidth]}>
+      <section css={activityContent}>
         <List component="ol" css={innerClasses.sentenceContainer}>
           {gapsData.map((item, sentenceIndex) => (
             <ListItem key={sentenceIndex} css={listItem}>

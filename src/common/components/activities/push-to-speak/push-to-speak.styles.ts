@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 
 export const spokenText = css`
-  display: inline;
-  max-width: 180px;
+  padding: 0.5rem;
 `;
 
 export const speakButton = css`
