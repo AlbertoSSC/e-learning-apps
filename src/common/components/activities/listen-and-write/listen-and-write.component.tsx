@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@mui/material';
+import { Button, List, ListItem } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
 import { ListenAndWriteActivity } from '@/core';
@@ -12,9 +12,10 @@ import * as innerClasses from './listen-and-write.styles';
 import {
   activityContainer,
   activityContent,
-  correctionButton,
   repeatAndCorrectButtons,
+  repeatingButton,
 } from '@/styles';
+import { CheckIconAnimation } from '@/common/utils';
 
 interface Props {
   activity: ListenAndWriteActivity;
@@ -49,31 +50,38 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
   return (
     <article css={activityContainer}>
       <section css={[activityContent, innerClasses.inputsContainer]}>
-        {activity.audioList.map((audio, index) => (
-          <SingleAudioComponent
-            key={audio.id}
-            index={index}
-            audioUrl={audio.audioUrl}
-            correctAnswers={audio.correctAnswers}
-            isCorrectAnswer={isCorrectAnswer[index]}
-            inputValues={inputValues}
-            setInputValues={setInputValues}
-          />
-        ))}
+        <List component="ol">
+          {activity.audioList.map((audio, index) => (
+            <React.Fragment key={audio.id}>
+              <ListItem>
+                {isCorrectAnswer[index] === true && (
+                  <CheckIconAnimation
+                    customStyles={innerClasses.checkIconCustomStyle}
+                  />
+                )}
+                <SingleAudioComponent
+                  index={index}
+                  audioUrl={audio.audioUrl}
+                  correctAnswers={audio.correctAnswers}
+                  isCorrectAnswer={isCorrectAnswer[index]}
+                  inputValues={inputValues}
+                  setInputValues={setInputValues}
+                />
+              </ListItem>
+            </React.Fragment>
+          ))}
+        </List>
       </section>
       <section css={repeatAndCorrectButtons}>
         <Button
           variant="contained"
+          css={repeatingButton}
           startIcon={<LoopIcon />}
           onClick={handleResetInputs}
         >
           Repetir
         </Button>
-        <Button
-          variant="contained"
-          css={correctionButton}
-          onClick={handleValidateAnswers}
-        >
+        <Button variant="contained" onClick={handleValidateAnswers}>
           Corregir
         </Button>
       </section>

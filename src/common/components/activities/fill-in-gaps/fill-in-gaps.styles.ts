@@ -32,3 +32,8 @@ export const listItem = css`
     align-items: baseline;
   }
 `;
+
+export const checkIconCustomStyle = css`
+  top: 15px;
+  left: -18px;
+`;

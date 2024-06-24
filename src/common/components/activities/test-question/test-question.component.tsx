@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@mui/material';
+import { Button, List, ListItem } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
 import { TestQuestionActivity } from '@/core';
@@ -10,10 +10,11 @@ import { useTestQuestionState } from './hooks/use-test-question';
 import {
   activityContainer,
   activityContent,
-  correctionButton,
   repeatAndCorrectButtons,
+  repeatingButton,
 } from '@/styles';
 import * as innerClasses from './test-question.styles';
+import { CheckIconAnimation } from '@/common/utils';
 
 export interface TestQuestionComponentProps {
   activity: TestQuestionActivity;
@@ -46,33 +47,38 @@ export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
   return (
     <article css={activityContainer}>
       <section css={[activityContent, innerClasses.testContainer]}>
-        {activity.sentenceList.map((sentence, index) => (
-          <Question
-            key={`test-sentence-${index}`}
-            sentence={sentence}
-            index={index}
-            formErrorStyle={formErrorStyle}
-            values={values}
-            handleChange={handleChange}
-            helpertext={helpertext}
-            correctionColorStyle={correctionColorStyle}
-          />
-        ))}
+        <List>
+          {activity.sentenceList.map((sentence, index) => (
+            <ListItem key={`test-sentence-${index}`}>
+              {answersCorrection[index] === true && (
+                <CheckIconAnimation
+                  customStyles={innerClasses.checkIconCustomStyle}
+                />
+              )}
+              <Question
+                sentence={sentence}
+                index={index}
+                formErrorStyle={formErrorStyle}
+                values={values}
+                handleChange={handleChange}
+                helpertext={helpertext}
+                correctionColorStyle={correctionColorStyle}
+              />
+            </ListItem>
+          ))}
+        </List>
       </section>
 
       <section css={repeatAndCorrectButtons}>
         <Button
           variant="contained"
+          css={repeatingButton}
           startIcon={<LoopIcon />}
           onClick={handleReset}
         >
           Repetir
         </Button>
-        <Button
-          variant="contained"
-          css={correctionButton}
-          onClick={handleValidation}
-        >
+        <Button variant="contained" onClick={handleValidation}>
           Corregir
         </Button>
       </section>

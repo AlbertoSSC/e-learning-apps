@@ -12,7 +12,7 @@ export const questionContainer = css`
 export const option = (color: string) => css`
   background-color: #ebebeb;
   margin: 0.1rem;
-  border-radius: 4px;
+  border-radius: 24px;
   color: #242424;
 
   &.MuiFormControlLabel-root {
@@ -23,4 +23,9 @@ export const option = (color: string) => css`
   & .MuiRadio-root.Mui-checked {
     color: ${color};
   }
+`;
+
+export const checkIconCustomStyle = css`
+  top: 24px;
+  left: -5px;
 `;

@@ -1,15 +1,19 @@
-import React from 'react';
+import { SerializedStyles } from '@emotion/react';
 
 import {
-  outerCircleWrapperStyle,
+  circleWrapperStyle,
   outerCircleStyle,
   innerCircleStyle,
   checkStyle,
 } from './check-iconAnimation.styles';
 
-const CheckIconAnimation: React.FC = () => {
+interface Props {
+  customStyles?: SerializedStyles;
+}
+export const CheckIconAnimation: React.FC<Props> = props => {
+  const { customStyles } = props;
   return (
-    <div css={outerCircleWrapperStyle}>
+    <div css={[circleWrapperStyle, customStyles]}>
       <div css={outerCircleStyle}></div>
       <div css={innerCircleStyle}>
         <svg viewBox="0 0 52 52" css={checkStyle}>
@@ -19,5 +23,3 @@ const CheckIconAnimation: React.FC = () => {
     </div>
   );
 };
-
-export default CheckIconAnimation;

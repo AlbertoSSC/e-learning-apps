@@ -5,7 +5,7 @@ export const DragDropContainer = css`
   justify-content: space-around;
   padding: 1.5rem;
   width: -webkit-fill-available;
-  max-width: 400px;
+  max-width: 500px;
 `;
 
 export const imageContainer = css`
@@ -49,7 +49,7 @@ export const validationStyle = (
   text-align: center;
 
   border: 1px solid lightgrey;
-  border-radius: 8% 8% 0% 0%;
+  border-radius: 8px 8px 0 0;
   border-width: 0px 0px 2px;
   border-bottom-color: ${borderStyle};
 
@@ -59,4 +59,8 @@ export const validationStyle = (
   min-height: 3.5rem;
   font-size: x-large;
   background-color: ${activeBoxIndex === index ? 'lightblue' : '#f0f0f0'};
+`;
+
+export const customCheckIconStyles = css`
+  left: -28px;
 `;

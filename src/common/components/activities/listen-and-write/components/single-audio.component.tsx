@@ -1,7 +1,7 @@
 import { AudioPlayer } from '@/common';
 import { UserTextInput } from './user-text-input';
 
-import * as classes from '../listen-and-write.styles';
+import * as innerClasses from '../listen-and-write.styles';
 
 interface Props {
   index: number;
@@ -23,12 +23,12 @@ export const SingleAudioComponent: React.FC<Props> = props => {
   } = props;
 
   return (
-    <article css={classes.singleListenAndWrite}>
+    <article css={innerClasses.singleListenAndWrite}>
       <section>
         <AudioPlayer audioUrl={audioUrl} />
       </section>
 
-      <section>
+      <section css={innerClasses.inputWidth}>
         <UserTextInput
           inputIndex={index}
           correctAnswers={correctAnswers}

@@ -33,11 +33,8 @@ export const CardListenComponent: React.FC<Props> = props => {
   };
 
   return (
-    <article id="activity container" css={activityContainer}>
-      <section
-        id="activity content"
-        css={[activityContent, activityContentCardSlider(currentCard)]}
-      >
+    <article css={activityContainer}>
+      <section css={[activityContent, activityContentCardSlider(currentCard)]}>
         {media.cardTextList.map((card, index) => (
           <CardComponent
             card={card}

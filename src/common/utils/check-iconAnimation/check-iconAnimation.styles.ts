@@ -43,8 +43,8 @@ const fadeOut = keyframes`
   }
 `;
 
-export const outerCircleWrapperStyle = css`
-  position: relative;
+export const circleWrapperStyle = css`
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,19 +52,17 @@ export const outerCircleWrapperStyle = css`
 
 export const outerCircleStyle = css`
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 36px;
+  height: 36px;
   border: 5px solid green;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   animation: ${borderCircle} 0.5s forwards, ${fadeOut} 0.3s 0.5s forwards;
 `;
 
 export const innerCircleStyle = css`
-  width: 100px;
-  height: 100px;
+  width: 24px;
+  height: 24px;
   background-color: green;
   border-radius: 50%;
   display: flex;

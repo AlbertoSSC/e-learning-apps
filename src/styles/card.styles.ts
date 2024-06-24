@@ -3,6 +3,7 @@ import { css, keyframes } from '@emotion/react';
 export const activityContentCardSlider = (currentCard: number) => css`
   display: flex;
   flex-direction: row;
+  max-width: 350px;
 
   background-color: transparent;
 
@@ -47,6 +48,9 @@ export const cardContainer = css`
   align-items: center;
 
   min-width: fit-content;
+
+  border: none;
+  border-radius: 24px;
 `;
 
 export const cardContent = css`
@@ -56,7 +60,6 @@ export const cardContent = css`
 `;
 
 export const cardMedia = css`
-  border-radius: 4px;
   aspect-ratio: 1;
   max-width: fit-content;
 `;

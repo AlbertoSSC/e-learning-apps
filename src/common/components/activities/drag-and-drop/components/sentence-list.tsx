@@ -3,6 +3,7 @@ import React from 'react';
 import { List, ListItem } from '@mui/material';
 
 import { SenteceToDrop } from './sentence-to-drop';
+import { CheckIconAnimation } from '@/common';
 
 import * as innerClasses from '../drag-drop.styles';
 
@@ -34,6 +35,12 @@ export const SentenceListComponent: React.FC<Props> = props => {
           key={`sentence-container-${index}`}
           css={innerClasses.listItem}
         >
+          {validated[index] === index && (
+            <CheckIconAnimation
+              customStyles={innerClasses.customCheckIconStyles}
+            />
+          )}
+
           <SenteceToDrop
             index={index}
             sentence={sentence}

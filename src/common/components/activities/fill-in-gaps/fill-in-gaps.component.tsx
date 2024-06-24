@@ -4,17 +4,22 @@ import { Button, List, ListItem, ListItemText } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
 import { FillInGapActivity } from '@/core';
+import { CheckIconAnimation } from '@/common';
 import { GapActivityRow } from './components/gap-activity-rows';
 import { useGapsFillState } from './hooks/use-gaps-fill-state';
 
 import {
   activityContainer,
   activityContent,
-  correctionButton,
   listNumbers,
   repeatAndCorrectButtons,
+  repeatingButton,
 } from '@/styles';
-import { innerClasses, listItem } from './fill-in-gaps.styles';
+import {
+  innerClasses,
+  listItem,
+  checkIconCustomStyle,
+} from './fill-in-gaps.styles';
 
 interface Props {
   activity: FillInGapActivity;
@@ -40,6 +45,9 @@ export const FillInGapsComponent: React.FC<Props> = ({ activity }) => {
                 primary={`${sentenceIndex + 1}.`}
                 css={[listItem, listNumbers]}
               />
+              {isCorrectAnswers[sentenceIndex]?.every(
+                answer => answer === true
+              ) && <CheckIconAnimation customStyles={checkIconCustomStyle} />}
               <GapActivityRow
                 item={item}
                 inputsValues={inputsValues[sentenceIndex]}
@@ -55,16 +63,13 @@ export const FillInGapsComponent: React.FC<Props> = ({ activity }) => {
       <section css={repeatAndCorrectButtons}>
         <Button
           variant="contained"
+          css={repeatingButton}
           startIcon={<LoopIcon />}
           onClick={handleReset}
         >
           Repetir
         </Button>
-        <Button
-          variant="contained"
-          css={correctionButton}
-          onClick={handleValidate}
-        >
+        <Button variant="contained" onClick={handleValidate}>
           Corregir
         </Button>
       </section>

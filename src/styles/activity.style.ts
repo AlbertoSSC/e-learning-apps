@@ -1,24 +1,32 @@
 import { css } from '@emotion/react';
 
+import theme from './themes/customMUI.theme';
+
 export const activityContainer = css`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  min-width: 366px;
 
   overflow: hidden;
-  border-radius: 4px;
-  padding: 1.5rem;
+  border-radius: 24px;
+  padding: 0.5rem;
+  padding-bottom: 1.5rem;
 
   background: rgba(220, 220, 220, 0.3);
   backdrop-filter: blur(10px);
+
+  box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15),
+    0px 4px 4px 0 rgba(0, 0, 0, 1);
 `;
 
 export const activityContent = css`
-  max-width: -webkit-fill-available;
-  
+  width: 100%;
+  min-width: 350px;
+
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 24px;
   transition: transform 0.5s ease-in-out;
 `;
 
@@ -38,9 +46,13 @@ export const repeatAndCorrectButtons = css`
   padding: 2rem 0 0;
 `;
 
-export const correctionButton = css`
+export const repeatingButton = css`
   &.MuiButtonBase-root {
-    background-color: green;
+    background-color: ${theme.palette.secondary.main};
+    color: ${theme.palette.secondary.contrastText};
+    &:hover {
+      background-color: ${theme.palette.secondary.dark};
+    }
   }
 `;
 

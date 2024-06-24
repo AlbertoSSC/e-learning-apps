@@ -11,8 +11,8 @@ import { useDragDrop } from './hooks/use-drag-drop';
 import {
   activityContainer,
   activityContent,
-  correctionButton,
   repeatAndCorrectButtons,
+  repeatingButton,
 } from '@/styles';
 import * as innerClasses from './drag-drop.styles';
 
@@ -61,16 +61,13 @@ export const DragAndDropComponent: React.FC<{
         <section css={repeatAndCorrectButtons}>
           <Button
             variant="contained"
+            css={repeatingButton}
             startIcon={<LoopIcon />}
             onClick={handleReset}
           >
             Repetir
           </Button>
-          <Button
-            variant="contained"
-            css={correctionButton}
-            onClick={handleValidation}
-          >
+          <Button variant="contained" onClick={handleValidation}>
             Corregir
           </Button>
         </section>
