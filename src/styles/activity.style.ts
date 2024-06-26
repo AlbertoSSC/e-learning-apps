@@ -51,7 +51,7 @@ export const repeatingButton = css`
     background-color: ${theme.palette.secondary.main};
     color: ${theme.palette.secondary.contrastText};
     &:hover {
-      background-color: ${theme.palette.secondary.dark};
+      background-color: ${theme.palette.secondary.light};
     }
   }
 `;

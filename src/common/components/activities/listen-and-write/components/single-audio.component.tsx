@@ -24,7 +24,7 @@ export const SingleAudioComponent: React.FC<Props> = props => {
 
   return (
     <article css={innerClasses.singleListenAndWrite}>
-      <section>
+      <section css={innerClasses.audioStyle}>
         <AudioPlayer audioUrl={audioUrl} />
       </section>
 

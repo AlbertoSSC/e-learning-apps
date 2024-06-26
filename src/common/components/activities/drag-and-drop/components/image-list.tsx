@@ -1,32 +1,26 @@
 import React from 'react';
-
 import { List, ListItem } from '@mui/material';
-
 import * as innerClasses from '../drag-drop.styles';
+import { Draggable } from './draggable';
 
 interface Props {
   images: string[];
-  handleDragStart: (image: string) => void;
 }
 
-export const ImageListComponent: React.FC<Props> = props => {
-  const { images, handleDragStart } = props;
-
+export const ImageListComponent: React.FC<Props> = ({ images }) => {
   return (
     <List id="image-list" component="ul" css={innerClasses.imageContainer}>
       {images.map((image, index) => (
-        <ListItem
-          id={`image-${index}`}
-          key={`dndImage-${index}`}
-          component="li"
-          css={innerClasses.listItemImage}
-          draggable="true"
-          onDragStart={() => {
-            handleDragStart(image);
-          }}
-        >
-          {image}
-        </ListItem>
+        <Draggable id={`dndImage-${index}`} key={`dndImage-${index}`}>
+          <ListItem
+            key={`image-${index}`}
+            id={`image-${index}`}
+            component="li"
+            css={innerClasses.listItemImage}
+          >
+            {image}
+          </ListItem>
+        </Draggable>
       ))}
     </List>
   );

@@ -9,3 +9,8 @@ export const podArticleStyle = css`
 export const podSectionsStyle = css`
   padding: 1rem;
 `;
+
+export const headerStyles = css`
+  padding: 1rem;
+  width: 100%;
+`;

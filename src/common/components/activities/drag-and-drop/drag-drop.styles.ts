@@ -1,11 +1,11 @@
-import { SerializedStyles, css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 
-export const DragDropContainer = css`
+export const dragDropContainer = css`
   display: flex;
   justify-content: space-around;
   padding: 1.5rem;
-  width: -webkit-fill-available;
-  max-width: 500px;
+  width: 100%;
+  max-width: 400px;
 `;
 
 export const imageContainer = css`
@@ -15,52 +15,59 @@ export const imageContainer = css`
 `;
 
 export const sentenceText = css`
+  width: 100%;
   display: flex;
   align-items: center;
-  flex: 1 1 auto;
   justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #242424;
 `;
 
 export const listItemImage = css`
-  &.MuiListItem-root {
-    font-size: x-large;
-    padding: 0.5rem;
-  }
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: x-large;
 `;
 
 export const listItem = css`
-  color: #242424;
-  &.MuiListItem-root {
-    font-size: x-large;
-    padding: 0.5rem;
-  }
-  &.MuiListItemText-root {
-    align-items: baseline;
-  }
+  font-size: large;
+`;
+
+export const droppedItem = css`
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const validationStyle = (
   borderStyle: SerializedStyles,
-  activeBoxIndex: number | null,
-  index: number
+  isOver: boolean
 ) => css`
   display: inline-block;
   align-content: center;
   text-align: center;
-
   border: 1px solid lightgrey;
   border-radius: 8px 8px 0 0;
   border-width: 0px 0px 2px;
-  border-bottom-color: ${borderStyle};
-
+  ${borderStyle};
   margin-left: 1rem;
-
-  min-width: 3.5rem;
-  min-height: 3.5rem;
+  width: 3.2rem;
+  height: 3.5rem;
   font-size: x-large;
-  background-color: ${activeBoxIndex === index ? 'lightblue' : '#f0f0f0'};
+  background-color: ${isOver ? 'lightblue' : '#f0f0f0'};
 `;
 
 export const customCheckIconStyles = css`
-  left: -28px;
+  top: 22px;
+  left: -25px;
 `;

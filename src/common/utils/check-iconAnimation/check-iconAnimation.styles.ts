@@ -1,3 +1,4 @@
+import theme from '@/styles/themes/customMUI.theme';
 import { css, keyframes } from '@emotion/react';
 
 const scaleCircle = keyframes`
@@ -54,7 +55,7 @@ export const outerCircleStyle = css`
   position: absolute;
   width: 36px;
   height: 36px;
-  border: 5px solid green;
+  border: 5px solid ${theme.palette.success.main};
   border-radius: 50%;
 
   animation: ${borderCircle} 0.5s forwards, ${fadeOut} 0.3s 0.5s forwards;
@@ -63,7 +64,7 @@ export const outerCircleStyle = css`
 export const innerCircleStyle = css`
   width: 24px;
   height: 24px;
-  background-color: green;
+  background-color: ${theme.palette.success.main};
   border-radius: 50%;
   display: flex;
   align-items: center;

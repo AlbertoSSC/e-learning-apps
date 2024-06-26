@@ -47,7 +47,7 @@ export const Question: React.FC<Props> = props => {
           name="answers"
           value={values[index]}
           onChange={e => handleChange(e, index)}
-        >
+          >
           {sentence.options.map((option, optionIndex) => (
             <FormControlLabel
               id={`question-option-${optionIndex}`}

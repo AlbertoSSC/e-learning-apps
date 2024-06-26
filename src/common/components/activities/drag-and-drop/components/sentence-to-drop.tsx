@@ -1,52 +1,39 @@
-import { css } from '@emotion/react';
+import React from 'react';
 
 import { Typography } from '@mui/material';
-import { blue } from '@mui/material/colors';
+
+import { Droppable } from './droppable';
 
 import * as innerClasses from '../drag-drop.styles';
 
 interface Props {
   index: number;
   sentence: string;
-  activeBoxIndex: number | null;
-  onDragLeave: () => void;
-  onDragOver: (e: React.DragEvent<HTMLDivElement>, index: number) => void;
-  onDrop: (index: number) => void;
-  droppedItems: (string | null)[];
   validated: number | null;
+  droppedItems: (string | null)[];
 }
 
-export const SenteceToDrop: React.FC<Props> = ({
+export const SentenceToDrop: React.FC<Props> = ({
   index,
   sentence,
-  activeBoxIndex,
-  onDragLeave,
-  onDragOver,
-  onDrop,
-  droppedItems,
   validated,
+  droppedItems,
 }) => {
-  const borderStyle = css`
-    ${validated === null
-      ? blue[700]
-      : validated === index
-      ? ' green'
-      : ' crimson'};
-  `;
+  const droppedItem = droppedItems[index];
 
   return (
     <div id={`sentence-text-${index}`} css={innerClasses.sentenceText}>
       <Typography variant="h6">{sentence}</Typography>
-
-      <div
-        id={`sentence-droppable-box-${index}`}
-        css={innerClasses.validationStyle(borderStyle, activeBoxIndex, index)}
-        onDragOver={e => onDragOver(e, index)}
-        onDragLeave={onDragLeave}
-        onDrop={() => onDrop(index)}
+      <Droppable
+        key={`droppable-${index}`}
+        id={`droppable-${index}`}
+        validated={validated}
+        index={index}
       >
-        {droppedItems[index]}
-      </div>
+        {droppedItem ? (
+          <div css={innerClasses.droppedItem}>{droppedItem}</div>
+        ) : null}
+      </Droppable>
     </div>
   );
 };

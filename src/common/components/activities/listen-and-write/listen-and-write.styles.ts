@@ -23,6 +23,11 @@ export const singleListenAndWrite = css`
 `;
 
 export const checkIconCustomStyle = css`
+  z-index: 1;
   top: 34px;
-  left: 14px;
+  left: 44px;
+`;
+
+export const audioStyle = css`
+  padding-right: 1rem;
 `;

@@ -1,13 +1,10 @@
 import React from 'react';
-
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import { Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
-
 import { DragAndDropActivity } from '@/core';
-
 import { SentenceListComponent, ImageListComponent } from './components';
 import { useDragDrop } from './hooks/use-drag-drop';
-
 import {
   activityContainer,
   activityContent,
@@ -16,48 +13,52 @@ import {
 } from '@/styles';
 import * as innerClasses from './drag-drop.styles';
 
-export const DragAndDropComponent: React.FC<{
+interface Props {
   activity: DragAndDropActivity;
-}> = ({ activity }) => {
-  const { sentences, images } = activity;
+}
 
+export const DragAndDropComponent: React.FC<Props> = ({ activity }) => {
+  const { sentences, images } = activity;
   const {
     shuffledImages,
-    droppedItems,
     validated,
-    activeBoxIndex,
-    handleDragOver,
-    handleDragStart,
-    handleDragLeave,
-    handleDrop,
+    droppedItems,
     handleValidation,
+    handleDrop,
     handleReset,
   } = useDragDrop(sentences, images);
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over) {
+      const sourceIndex = parseInt(
+        (active.id as string).replace('dndImage-', ''),
+        10
+      );
+      const destinationIndex = parseInt(
+        (over.id as string).replace('droppable-', ''),
+        10
+      );
+
+      if (!isNaN(sourceIndex) && !isNaN(destinationIndex)) {
+        handleDrop(sourceIndex, destinationIndex);
+      }
+    }
+  };
+
   return (
-    <>
-      <article id="drag and drop activity" css={activityContainer}>
-        <section
-          id="drag-and-drop-container"
-          css={[activityContent, innerClasses.DragDropContainer]}
-          onDragOver={e => {
-            e.preventDefault();
-          }}
-        >
+    <DndContext onDragEnd={handleDragEnd}>
+      <article css={activityContainer}>
+        <section css={[activityContent, innerClasses.dragDropContainer]}>
           <SentenceListComponent
             sentences={sentences}
-            droppedItems={droppedItems}
             validated={validated}
-            handleDragOver={handleDragOver}
-            handleDragLeave={handleDragLeave}
-            handleDrop={handleDrop}
-            activeBoxIndex={activeBoxIndex}
+            droppedItems={droppedItems}
           />
-          <ImageListComponent
-            images={shuffledImages}
-            handleDragStart={handleDragStart}
-          />
+          <ImageListComponent images={shuffledImages} />
         </section>
+
         <section css={repeatAndCorrectButtons}>
           <Button
             variant="contained"
@@ -67,11 +68,12 @@ export const DragAndDropComponent: React.FC<{
           >
             Repetir
           </Button>
+
           <Button variant="contained" onClick={handleValidation}>
             Corregir
           </Button>
         </section>
       </article>
-    </>
+    </DndContext>
   );
 };

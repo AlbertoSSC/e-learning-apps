@@ -3,10 +3,13 @@ import { css } from '@emotion/react';
 export const testContainer = css`
   text-align: left;
   padding: 1.5rem;
+  width: fit-content;
+  min-width: 350px;
 `;
 
 export const questionContainer = css`
   padding: 1rem;
+  width: 100%;
 `;
 
 export const option = (color: string) => css`

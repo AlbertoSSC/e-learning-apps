@@ -23,10 +23,15 @@ import {
 
 import * as innerClasse from './activities-pod.styles';
 import { TestQuestionComponent } from '@/common/components/activities/test-question/test-question.component';
+import { ProfileComponent } from '@/common/components/profile/profile.component';
 
 export const ActivitiesPod = () => {
   return (
     <>
+      <header css={innerClasse.headerStyles}>
+        <ProfileComponent />
+      </header>
+
       <main>
         <article css={innerClasse.podArticleStyle}>
           <section css={innerClasse.podSectionsStyle}>
@@ -64,6 +69,7 @@ export const ActivitiesPod = () => {
           </section>
         </article>
       </main>
+
       <footer></footer>
     </>
   );

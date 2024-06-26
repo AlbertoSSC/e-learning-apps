@@ -15,6 +15,7 @@ import {
 } from '@/styles';
 import * as innerClasses from './test-question.styles';
 import { CheckIconAnimation } from '@/common/utils';
+import theme from '@/styles/themes/customMUI.theme';
 
 export interface TestQuestionComponentProps {
   activity: TestQuestionActivity;
@@ -33,9 +34,9 @@ export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
   } = useTestQuestionState(activity);
 
   const correctionColorStyle = (index: number): string => {
-    if (answersCorrection[index] === true) return 'green';
-    if (answersCorrection[index] === false) return 'crimson';
-    return '#1976d2';
+    if (answersCorrection[index] === true) return theme.palette.success.main;
+    if (answersCorrection[index] === false) return theme.palette.error.main;
+    return theme.palette.primary.main;
   };
 
   const formErrorStyle = (index: number): boolean => {
