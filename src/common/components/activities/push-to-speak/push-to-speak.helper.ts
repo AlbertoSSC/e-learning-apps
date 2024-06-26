@@ -59,8 +59,10 @@ export const voiceRecognition = (
 
   recognition.onstart = () => {
     setIsListening(true);
+    setTimeout(() => {
+      recognition.stop();
+    }, 3000);
   };
-
 
   recognition.onresult = (event: SpeechRecognitionEvent) => {
     const getSpokenText = event.results[0][0].transcript;
