@@ -45,7 +45,7 @@ export interface CardText {
   englishText?: string;
 }
 
-export interface CardTextActivity extends BaseActivity {
+export interface CardListenActivity extends BaseActivity {
   type: 'card-text';
   cardTextList: CardText[];
 }
@@ -87,7 +87,7 @@ export interface FillInGapActivity extends BaseActivity {
 
 export type Activity =
   | Video
-  | CardTextActivity
+  | CardListenActivity
   | FillInGapActivity
   | ListenAndWriteActivity
   | PushToSpeakActivity;

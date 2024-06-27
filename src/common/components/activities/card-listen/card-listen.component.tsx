@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Pagination } from '@mui/material';
 
-import { CardTextActivity } from '@/core/models';
+import { ActivityProgressHeader } from '../components/activity-progression-header';
+import { useActivitiesContext } from '@/core/providers';
+import { CardListenActivity } from '@/core/models';
 import { CardComponent } from './components/card';
 
 import {
@@ -12,48 +14,76 @@ import {
   paginationWidth,
   activityContentCardSlider,
   cardStyle,
+  activityHeader,
 } from '@/styles';
+import { useExerciseCompletion } from '../hooks/use-exercise-completion';
 
 interface Props {
-  media: CardTextActivity;
+  activity: CardListenActivity;
+  activityIndex: number;
 }
 
 export const CardListenComponent: React.FC<Props> = props => {
-  const { media } = props;
+  const { activity, activityIndex } = props;
+  const totalExercises = activity.cardTextList.length;
+
+  const { isCompletedActivities, setIsCompletedActivities } =
+    useActivitiesContext();
+
+  const {
+    totalExercisesCompleted,
+    isCompletedExercise,
+    setIsCompletedExercise,
+  } = useExerciseCompletion(
+    totalExercises,
+    activityIndex,
+    isCompletedActivities,
+    setIsCompletedActivities
+  );
 
   const [currentCard, setCurrentCard] = React.useState(0);
-  const [page, setPage] = React.useState(1);
 
   const handleChangePage = (
     _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    setPage(value);
     setCurrentCard(value - 1);
   };
 
   return (
     <article css={activityContainer}>
-      <section css={[activityContent, activityContentCardSlider(currentCard)]}>
-        {media.cardTextList.map((card, index) => (
+      <header css={activityHeader}>
+        <ActivityProgressHeader
+          title="Escucha"
+          subtitle="Atención a la pronunciación"
+          totalExercises={totalExercises}
+          completed={totalExercisesCompleted}
+        />
+      </header>
+
+      <main css={[activityContent, activityContentCardSlider(currentCard)]}>
+        {activity.cardTextList.map((card, index) => (
           <CardComponent
+            key={card.id}
             card={card}
             animationClass={cardStyle(index === currentCard)}
-            key={card.id}
+            isCompletedExercise={isCompletedExercise}
+            setIsCompletedExercise={setIsCompletedExercise}
+            index={index}
           />
         ))}
-      </section>
+      </main>
 
-      {media.cardTextList.length > 1 && (
-        <section css={paginationWidth}>
+      {activity.cardTextList.length > 1 && (
+        <footer css={paginationWidth}>
           <Pagination
             css={paginationStyle}
             siblingCount={0}
-            count={media.cardTextList.length}
-            page={page}
+            count={activity.cardTextList.length}
+            page={currentCard + 1}
             onChange={handleChangePage}
           />
-        </section>
+        </footer>
       )}
     </article>
   );

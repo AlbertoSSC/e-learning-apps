@@ -30,6 +30,29 @@ export const activityContent = css`
   transition: transform 0.5s ease-in-out;
 `;
 
+export const activityHeader = css`
+  width: 100%;
+`;
+
+export const contentHeader = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: ${theme.palette.primary.main};
+  font-weight: 500;
+
+  & .MuiTypography-h5 {
+    font-weight: bold;
+  }
+`;
+
+export const circularProgress = css`
+  display: flex;
+`;
+
 export const listNumbers = css`
   padding-right: 0.5rem;
   min-width: auto;

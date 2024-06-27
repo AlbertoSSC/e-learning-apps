@@ -21,9 +21,14 @@ import * as innerClasses from '../card-listen.style';
 interface Props {
   card: CardText;
   animationClass?: SerializedStyles;
+  isCompletedExercise: boolean[];
+  setIsCompletedExercise: React.Dispatch<React.SetStateAction<boolean[]>>;
+  index: number;
 }
 
-export const CardComponent: React.FC<Props> = ({ card, animationClass }) => {
+export const CardComponent: React.FC<Props> = props => {
+  const { card, animationClass, isCompletedExercise, setIsCompletedExercise, index } = props;
+
   const [anchorElMap, setAnchorElMap] = React.useState<
     Record<string, HTMLButtonElement | null>
   >({});
@@ -39,6 +44,13 @@ export const CardComponent: React.FC<Props> = ({ card, animationClass }) => {
     setAnchorElMap({ ...anchorElMap, [cardId]: null });
   };
 
+  const handleAudioClick = () => {
+    const newExerciseCompleted = [...isCompletedExercise];
+    newExerciseCompleted[index] = true;
+
+    setIsCompletedExercise(newExerciseCompleted);
+  };
+
   return (
     <Card
       variant="outlined"
@@ -52,7 +64,7 @@ export const CardComponent: React.FC<Props> = ({ card, animationClass }) => {
           alt={`${card.image.name} image`}
           css={cardMedia}
         />
-        <CardActions css={cardActions}>
+        <CardActions css={cardActions} onClick={handleAudioClick}>
           <AudioPlayer audioUrl={card.audioUrl} />
         </CardActions>
 
