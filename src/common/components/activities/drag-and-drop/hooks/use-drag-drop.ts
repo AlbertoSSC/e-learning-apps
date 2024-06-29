@@ -6,10 +6,9 @@ export const useDragDrop = (sentences: string[], images: string[]) => {
   const [shuffledImages, setShuffleImages] =
     useState<string[]>(getShuffledImages);
 
-  const [validated, setValidated] = useState<(number | null)[]>(
+  const [validated, setValidated] = useState<(boolean | null)[]>(
     new Array(sentences.length).fill(null)
   );
-
 
   const [droppedItems, setDroppedItems] = useState<(string | null)[]>(
     new Array(sentences.length).fill(null)
@@ -19,8 +18,8 @@ export const useDragDrop = (sentences: string[], images: string[]) => {
     const updatedValidation = [...validated];
     droppedItems.forEach((item, index) => {
       item === images[index]
-        ? (updatedValidation[index] = index)
-        : (updatedValidation[index] = -1);
+        ? (updatedValidation[index] = true)
+        : (updatedValidation[index] = false);
     });
     setValidated(updatedValidation);
   };

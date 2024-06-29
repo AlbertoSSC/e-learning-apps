@@ -6,7 +6,7 @@ export const validateGapsInput = (
   inputsValues: string[][]
 ) => {
   return gapsData.map((item, sentenceIndex) => {
-    const gapOptions = item.gaps.map(gap =>
+    const gapOptionsNormalized = item.gaps.map(gap =>
       gap.options.map(option => normalizeString(option))
     );
 
@@ -14,7 +14,7 @@ export const validateGapsInput = (
       normalizeString(input)
     );
 
-    const isValidGapAnswer = gapOptions.map((gap, index) =>
+    const isValidGapAnswer = gapOptionsNormalized.map((gap, index) =>
       gap.includes(inputsValuesNormalized[index])
     );
 

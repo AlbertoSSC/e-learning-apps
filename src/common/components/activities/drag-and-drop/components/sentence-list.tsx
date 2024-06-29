@@ -6,7 +6,7 @@ import * as innerClasses from '../drag-drop.styles';
 
 interface Props {
   sentences: string[];
-  validated: (number | null)[];
+  validated: (boolean | null)[];
   droppedItems: (string | null)[];
 }
 
@@ -23,7 +23,7 @@ export const SentenceListComponent: React.FC<Props> = ({
           key={`sentence-container-${index}`}
           css={innerClasses.listItem}
         >
-          {validated[index] === index && (
+          {validated[index] === true && (
             <CheckIconAnimation
               customStyles={innerClasses.customCheckIconStyles}
             />

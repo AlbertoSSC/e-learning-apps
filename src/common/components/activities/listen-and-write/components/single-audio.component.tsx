@@ -7,7 +7,7 @@ interface Props {
   index: number;
   audioUrl: string;
   correctAnswers: string[];
-  isCorrectAnswer: boolean | undefined;
+  isCorrectAnswer: boolean | null;
   inputValues: string[];
   setInputValues: React.Dispatch<React.SetStateAction<string[]>>;
 }

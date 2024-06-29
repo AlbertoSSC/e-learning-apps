@@ -27,19 +27,16 @@ export const CardListenComponent: React.FC<Props> = props => {
   const { activity, activityIndex } = props;
   const totalExercises = activity.cardTextList.length;
 
-  const { isCompletedActivities, setIsCompletedActivities } =
+  const { isCompletedActivitiesContext, setIsCompletedActivitiesContext } =
     useActivitiesContext();
 
-  const {
-    totalExercisesCompleted,
-    isCompletedExercise,
-    setIsCompletedExercise,
-  } = useExerciseCompletion(
-    totalExercises,
-    activityIndex,
-    isCompletedActivities,
-    setIsCompletedActivities
-  );
+  const { totalExercisesCompleted, handleCompletedExerciseForCard } =
+    useExerciseCompletion(
+      totalExercises,
+      activityIndex,
+      isCompletedActivitiesContext,
+      setIsCompletedActivitiesContext
+    );
 
   const [currentCard, setCurrentCard] = React.useState(0);
 
@@ -54,7 +51,7 @@ export const CardListenComponent: React.FC<Props> = props => {
     <article css={activityContainer}>
       <header css={activityHeader}>
         <ActivityProgressHeader
-          title="Escucha"
+          title="Escuchar"
           subtitle="Atención a la pronunciación"
           totalExercises={totalExercises}
           completed={totalExercisesCompleted}
@@ -66,9 +63,8 @@ export const CardListenComponent: React.FC<Props> = props => {
           <CardComponent
             key={card.id}
             card={card}
-            animationClass={cardStyle(index === currentCard)}
-            isCompletedExercise={isCompletedExercise}
-            setIsCompletedExercise={setIsCompletedExercise}
+            animationclass={cardStyle(index === currentCard)}
+            handleCompletedExercise={handleCompletedExerciseForCard}
             index={index}
           />
         ))}

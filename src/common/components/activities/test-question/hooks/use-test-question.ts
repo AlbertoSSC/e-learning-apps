@@ -8,8 +8,8 @@ export const useTestQuestionState = (activity: TestQuestionActivity) => {
   );
 
   const [answersCorrection, setAnswersCorrection] = React.useState<
-    (boolean | undefined)[]
-  >(new Array(activity.sentenceList.length).fill(undefined));
+    (boolean | null)[]
+  >(new Array(activity.sentenceList.length).fill(null));
 
   const [helpertext, setHelpertext] = React.useState(false);
 
@@ -20,7 +20,7 @@ export const useTestQuestionState = (activity: TestQuestionActivity) => {
     const newValues = [...values];
     newValues[index] = event.target.value;
     setValues(newValues);
-    setAnswersCorrection(prev => [...prev, (prev[index] = undefined)]);
+    setAnswersCorrection(prev => [...prev, (prev[index] = null)]);
   };
 
   const handleValidation = () => {
@@ -34,9 +34,7 @@ export const useTestQuestionState = (activity: TestQuestionActivity) => {
 
   const handleReset = () => {
     setValues(new Array(activity.sentenceList.length).fill(''));
-    setAnswersCorrection(
-      new Array(activity.sentenceList.length).fill(undefined)
-    );
+    setAnswersCorrection(new Array(activity.sentenceList.length).fill(null));
     setHelpertext(false);
   };
 

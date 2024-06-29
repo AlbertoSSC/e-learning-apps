@@ -3,7 +3,7 @@ import React from 'react';
 import { TextField, Typography } from '@mui/material';
 
 import { FillInGapSentence } from '@/core';
-import { innerClasses } from '../fill-in-gaps.styles';
+import * as innerClasses from '../fill-in-gaps.styles';
 
 interface Props {
   item: FillInGapSentence;
@@ -21,7 +21,7 @@ export const GapActivityRow: React.FC<Props> = ({
   setInputsValues,
 }) => {
   return (
-    <div id={`activity-row-${item.id}`} >
+    <div id={`activity-row-${item.id}`}>
       {item.sentence.split('___').map((textPiece, index) => (
         <React.Fragment key={`textPiece-${index}`}>
           <Typography component="span" color="text.primary">
@@ -46,11 +46,6 @@ export const GapActivityRow: React.FC<Props> = ({
                   return newValue;
                 });
               }}
-              color={
-                isCorrectAnswers && isCorrectAnswers[index] === true
-                  ? 'success'
-                  : 'primary'
-              }
               error={isCorrectAnswers && isCorrectAnswers[index] === false}
               helperText={
                 isCorrectAnswers &&

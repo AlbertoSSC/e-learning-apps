@@ -25,7 +25,7 @@ interface CardComponentProps {
   isListening: boolean;
   handleStopClick: () => void;
   spokenText: string;
-  animationClass?: SerializedStyles;
+  animationclass?: SerializedStyles;
 }
 
 const CardComponent: React.FC<CardComponentProps> = ({
@@ -35,13 +35,13 @@ const CardComponent: React.FC<CardComponentProps> = ({
   isListening,
   handleStopClick,
   spokenText,
-  animationClass,
+  animationclass,
 }) => {
   return (
     <Card
       variant="outlined"
       id="card-container"
-      css={[cardContainer, animationClass]}
+      css={[cardContainer, animationclass]}
     >
       <CardContent id="inner card Content" css={cardContent}>
         <CardMedia

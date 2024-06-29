@@ -40,7 +40,7 @@ export const contentHeader = css`
   align-items: center;
 
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   color: ${theme.palette.primary.main};
   font-weight: 500;
 

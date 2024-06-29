@@ -20,14 +20,13 @@ import * as innerClasses from '../card-listen.style';
 
 interface Props {
   card: CardText;
-  animationClass?: SerializedStyles;
-  isCompletedExercise: boolean[];
-  setIsCompletedExercise: React.Dispatch<React.SetStateAction<boolean[]>>;
+  animationclass?: SerializedStyles;
+  handleCompletedExercise: (index: number) => void;
   index: number;
 }
 
 export const CardComponent: React.FC<Props> = props => {
-  const { card, animationClass, isCompletedExercise, setIsCompletedExercise, index } = props;
+  const { card, animationclass, handleCompletedExercise, index } = props;
 
   const [anchorElMap, setAnchorElMap] = React.useState<
     Record<string, HTMLButtonElement | null>
@@ -40,22 +39,19 @@ export const CardComponent: React.FC<Props> = props => {
     setAnchorElMap({ ...anchorElMap, [cardId]: event.currentTarget });
   };
 
-  const handleClose = (cardId: string) => {
+  const handlePopoverClose = (cardId: string) => {
     setAnchorElMap({ ...anchorElMap, [cardId]: null });
   };
 
   const handleAudioClick = () => {
-    const newExerciseCompleted = [...isCompletedExercise];
-    newExerciseCompleted[index] = true;
-
-    setIsCompletedExercise(newExerciseCompleted);
+    handleCompletedExercise(index);
   };
 
   return (
     <Card
       variant="outlined"
       id="inner card Container"
-      css={[cardContainer, animationClass]}
+      css={[cardContainer, animationclass]}
     >
       <CardContent id="inner card Content" css={cardContent}>
         <CardMedia
@@ -88,7 +84,7 @@ export const CardComponent: React.FC<Props> = props => {
                 id={`popover-id${card.id}`}
                 open={Boolean(anchorElMap[card.id])}
                 anchorEl={anchorElMap[card.id]}
-                onClose={() => handleClose(card.id)}
+                onClose={() => handlePopoverClose(card.id)}
                 anchorOrigin={{
                   vertical: 'bottom',
                   horizontal: 'center',

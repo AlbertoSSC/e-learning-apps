@@ -14,12 +14,12 @@ interface Props {
 
 export const ActivityProgressHeader: React.FC<Props> = props => {
   const { title, subtitle, totalExercises, completed } = props;
-  
+
   return (
     <article css={[activityContent, contentHeader]}>
       <section>
         <Typography variant="h5">{title}</Typography>
-        <Typography variant="inherit" color="text.secondary">
+        <Typography variant="inherit" color="#aaa">
           {subtitle}
         </Typography>
         {/* <details style={{color: "#999"}}>

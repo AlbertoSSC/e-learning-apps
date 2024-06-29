@@ -9,7 +9,7 @@ import * as innerClasse from './activities-pod.styles';
 import { GetActivity } from '@/core';
 
 export const ActivitiesPod = () => {
-  const { setTotalActivities, setIsCompletedActivities } =
+  const { setTotalActivitiesContext, setIsCompletedActivitiesContext } =
     useActivitiesContext();
 
   const [activities, setActivities] = React.useState<GetActivity[]>([]);
@@ -18,8 +18,10 @@ export const ActivitiesPod = () => {
     const activitiesForSet = getMockData();
 
     setActivities(activitiesForSet);
-    setTotalActivities(activitiesForSet.length);
-    setIsCompletedActivities(new Array(activitiesForSet.length).fill(false));
+    setTotalActivitiesContext(activitiesForSet.length);
+    setIsCompletedActivitiesContext(
+      new Array(activitiesForSet.length).fill(false)
+    );
   }, []);
 
   return (

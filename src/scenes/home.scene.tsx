@@ -5,7 +5,7 @@ export const HomeScene: React.FC = () => {
   return (
     <>
       <ActivitiesContextProvider>
-        <ActivitiesPod />;
+        <ActivitiesPod />
       </ActivitiesContextProvider>
     </>
   );

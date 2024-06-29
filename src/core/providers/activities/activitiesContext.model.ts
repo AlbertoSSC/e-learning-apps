@@ -1,7 +1,9 @@
 export interface ActivityContextModel {
-  totalActivities: number;
-  isCompletedActivities: boolean[];
-  totalCompletedActivities: number;
-  setTotalActivities: React.Dispatch<React.SetStateAction<number>>;
-  setIsCompletedActivities: React.Dispatch<React.SetStateAction<boolean[]>>;
+  totalActivitiesContext: number;
+  isCompletedActivitiesContext: (boolean | null)[];
+  totalCompletedActivitiesContext: number;
+  setTotalActivitiesContext: React.Dispatch<React.SetStateAction<number>>;
+  setIsCompletedActivitiesContext: React.Dispatch<
+    React.SetStateAction<(boolean | null)[]>
+  >;
 }

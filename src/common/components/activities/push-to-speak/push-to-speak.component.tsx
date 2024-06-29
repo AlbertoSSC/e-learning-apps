@@ -2,9 +2,11 @@ import React from 'react';
 
 import { Pagination } from '@mui/material';
 
-import { PushToSpeakActivity } from '@/core';
+import { PushToSpeakActivity, useActivitiesContext } from '@/core';
 import CardComponent from './components/card';
 import { SpeechRecognition, voiceRecognition } from './push-to-speak.helper';
+import { ActivityProgressHeader } from '../components/activity-progression-header';
+import { useExerciseCompletion } from '../hooks/use-exercise-completion';
 
 import {
   activityContainer,
@@ -13,27 +15,50 @@ import {
   activityContentCardSlider,
   cardStyle,
   paginationWidth,
+  activityHeader,
 } from '@/styles';
 
 interface PushToSpeak {
   activity: PushToSpeakActivity;
+  activityIndex: number;
 }
 
-export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
+export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
+  const { activity, activityIndex } = props;
+
   const [currentCard, setCurrentCard] = React.useState(0);
 
   const [spokenText, setSpokenText] = React.useState('');
   const [isListening, setIsListening] = React.useState<boolean>(false);
 
-  const recognitionRef = React.useRef<SpeechRecognition | null>(null);
+  const [isCorrectSpeaking, setIsCorrectSpeaking] = React.useState<boolean[]>(
+    new Array(activity.textList.length).fill(false)
+  );
 
   const words = activity.textList.map(text => text.toLowerCase());
+  const imageList = activity.imageList;
+
+  const totalExercises = activity.textList.length;
+
+  const { isCompletedActivitiesContext, setIsCompletedActivitiesContext } =
+    useActivitiesContext();
+
+  const { totalExercisesCompleted, setIsCompletedExercise } =
+    useExerciseCompletion(
+      totalExercises,
+      activityIndex,
+      isCompletedActivitiesContext,
+      setIsCompletedActivitiesContext
+    );
+
+  const recognitionRef = React.useRef<SpeechRecognition | null>(null);
 
   const handleSpeak = () => {
     voiceRecognition(
       recognitionRef,
       setIsListening,
       setSpokenText,
+      setIsCorrectSpeaking,
       currentCard,
       activity,
       words
@@ -56,11 +81,22 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
     setCurrentCard(value - 1);
   };
 
-  const imageList = activity.imageList;
+  React.useEffect(() => {
+    setIsCompletedExercise(isCorrectSpeaking);
+  }, [isCorrectSpeaking]);
 
   return (
     <article id="activity-container" css={activityContainer}>
-      <section
+      <header css={activityHeader}>
+        <ActivityProgressHeader
+          title="Hablar"
+          subtitle="Practica la pronunciación"
+          totalExercises={totalExercises}
+          completed={totalExercisesCompleted}
+        />
+      </header>
+
+      <main
         id="asdfasf"
         css={[activityContent, activityContentCardSlider(currentCard)]}
       >
@@ -75,13 +111,13 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
             isListening={isListening}
             handleStopClick={handleStopClick}
             spokenText={spokenText}
-            animationClass={cardStyle(index === currentCard)}
+            animationclass={cardStyle(index === currentCard)}
           />
         ))}
-      </section>
+      </main>
 
       {activity.textList.length > 1 && (
-        <section css={paginationWidth}>
+        <footer css={paginationWidth}>
           <Pagination
             css={paginationStyle}
             siblingCount={0}
@@ -89,7 +125,7 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = ({ activity }) => {
             page={currentCard + 1}
             onChange={handlePageChange}
           />
-        </section>
+        </footer>
       )}
     </article>
   );

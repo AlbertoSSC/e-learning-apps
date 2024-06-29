@@ -8,31 +8,31 @@ interface Props extends PropsWithChildren {}
 export const ActivitiesContextProvider: React.FC<Props> = props => {
   const { children } = props;
 
-  const [totalActivities, setTotalActivities] = React.useState(0);
+  const [totalActivitiesContext, setTotalActivitiesContext] = React.useState(0);
 
-  const [isCompletedActivities, setIsCompletedActivities] = React.useState<
-    boolean[]
-  >([]);
-  const [totalCompletedActivities, setTotalCompletedActivities] =
+  const [isCompletedActivitiesContext, setIsCompletedActivitiesContext] =
+    React.useState<(boolean | null)[]>([]);
+
+  const [totalCompletedActivitiesContext, settotalCompletedActivitiesContext] =
     React.useState(0);
 
   React.useEffect(() => {
-    const newCompletedActivities = isCompletedActivities.filter(
+    const newCompletedActivities = isCompletedActivitiesContext.filter(
       activity => activity === true
     ).length;
 
-    setTotalCompletedActivities(newCompletedActivities);
-  }, [isCompletedActivities]);
+    settotalCompletedActivitiesContext(newCompletedActivities);
+  }, [isCompletedActivitiesContext]);
 
   return (
     <>
       <ActivityContext.Provider
         value={{
-          totalActivities,
-          isCompletedActivities,
-          totalCompletedActivities,
-          setTotalActivities,
-          setIsCompletedActivities,
+          totalActivitiesContext,
+          isCompletedActivitiesContext,
+          totalCompletedActivitiesContext,
+          setTotalActivitiesContext,
+          setIsCompletedActivitiesContext,
         }}
       >
         {children}

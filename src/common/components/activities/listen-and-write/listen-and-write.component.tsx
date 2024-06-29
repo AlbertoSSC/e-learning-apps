@@ -3,35 +3,52 @@ import React from 'react';
 import { Button, List, ListItem } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
-import { ListenAndWriteActivity } from '@/core';
+import { ListenAndWriteActivity, useActivitiesContext } from '@/core';
 
 import { SingleAudioComponent } from './components/single-audio.component';
 import { compareAnswers } from './listen-and-write.helpers';
+import { CheckIconAnimation } from '@/common/utils';
+import { useExerciseCompletion } from '../hooks/use-exercise-completion';
+import { ActivityProgressHeader } from '../components/activity-progression-header';
 
-import * as innerClasses from './listen-and-write.styles';
 import {
   activityContainer,
   activityContent,
+  activityHeader,
   repeatAndCorrectButtons,
   repeatingButton,
 } from '@/styles';
-import { CheckIconAnimation } from '@/common/utils';
+import * as innerClasses from './listen-and-write.styles';
 
 interface Props {
   activity: ListenAndWriteActivity;
+  activityIndex: number;
 }
 
 export const ListenAndWriteComponent: React.FC<Props> = props => {
-  const { activity } = props;
+  const { activity, activityIndex } = props;
+
+  const totalExercises = activity.audioList.length;
+
+  const { isCompletedActivitiesContext, setIsCompletedActivitiesContext } =
+    useActivitiesContext();
+
+  const { totalExercisesCompleted, setIsCompletedExercise } =
+    useExerciseCompletion(
+      totalExercises,
+      activityIndex,
+      isCompletedActivitiesContext,
+      setIsCompletedActivitiesContext
+    );
 
   const [inputValues, setInputValues] = React.useState<string[]>(
     new Array(activity.audioList.length).fill('')
   );
   const [isCorrectAnswer, setIsCorrectAnswer] = React.useState<
-    (boolean | undefined)[]
+    (boolean | null)[]
   >([]);
 
-  const handleValidateAnswers = () => {
+  const handleValidate = () => {
     const newCorrection = activity.audioList.map((audio, index) => {
       const userInput = inputValues[index];
       const correctAnswers = audio.correctAnswers;
@@ -44,12 +61,25 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
 
   const handleResetInputs = () => {
     setInputValues(new Array(activity.audioList.length).fill(''));
-    setIsCorrectAnswer(new Array(activity.audioList.length).fill(undefined));
+    setIsCorrectAnswer(new Array(activity.audioList.length).fill(null));
   };
+
+  React.useEffect(() => {
+    setIsCompletedExercise(isCorrectAnswer);
+  }, [isCorrectAnswer]);
 
   return (
     <article css={activityContainer}>
-      <section css={[activityContent, innerClasses.inputsContainer]}>
+      <header css={activityHeader}>
+        <ActivityProgressHeader
+          title="Escuchar y escribir"
+          subtitle="Rellena con lo que dicen los audios"
+          totalExercises={totalExercises}
+          completed={totalExercisesCompleted}
+        />
+      </header>
+
+      <main css={[activityContent, innerClasses.inputsContainer]}>
         <List component="ol">
           {activity.audioList.map((audio, index) => (
             <React.Fragment key={audio.id}>
@@ -71,8 +101,9 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
             </React.Fragment>
           ))}
         </List>
-      </section>
-      <section css={repeatAndCorrectButtons}>
+      </main>
+
+      <footer css={repeatAndCorrectButtons}>
         <Button
           variant="contained"
           css={repeatingButton}
@@ -81,10 +112,10 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
         >
           Repetir
         </Button>
-        <Button variant="contained" onClick={handleValidateAnswers}>
+        <Button variant="contained" onClick={handleValidate}>
           Corregir
         </Button>
-      </section>
+      </footer>
     </article>
   );
 };

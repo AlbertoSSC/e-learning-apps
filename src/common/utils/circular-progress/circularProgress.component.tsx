@@ -6,7 +6,6 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import theme from '@/styles/themes/customMUI.theme';
 
 const CircularProgressWithLabel = (
   props: CircularProgressProps & { value: number }
@@ -39,10 +38,10 @@ const CircularProgressWithLabel = (
         variant="determinate"
         {...props}
         sx={{
-          color: theme =>
-            props.value === 100
-              ? theme.palette.success.main
-              : theme.palette.primary.main,
+          '& .MuiCircularProgress-circle': {
+            transition:
+              'stroke-dashoffset 1000ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+          },
         }}
       />
       <Box
@@ -60,9 +59,6 @@ const CircularProgressWithLabel = (
         <Typography
           variant="caption"
           component="div"
-          color={
-            props.value === 100 ? theme.palette.success.main : 'text.secondary'
-          }
           fontWeight={props.value === 100 ? 'bold' : 'none'}
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>

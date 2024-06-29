@@ -1,13 +1,20 @@
 import React from 'react';
+
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
+
 import { Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
-import { DragAndDropActivity } from '@/core';
+
+import { DragAndDropActivity, useActivitiesContext } from '@/core';
 import { SentenceListComponent, ImageListComponent } from './components';
+import { ActivityProgressHeader } from '../components/activity-progression-header';
 import { useDragDrop } from './hooks/use-drag-drop';
+import { useExerciseCompletion } from '../hooks/use-exercise-completion';
+
 import {
   activityContainer,
   activityContent,
+  activityHeader,
   repeatAndCorrectButtons,
   repeatingButton,
 } from '@/styles';
@@ -15,10 +22,25 @@ import * as innerClasses from './drag-drop.styles';
 
 interface Props {
   activity: DragAndDropActivity;
+  activityIndex: number;
 }
 
-export const DragAndDropComponent: React.FC<Props> = ({ activity }) => {
-  const { sentences, images } = activity;
+export const DragAndDropComponent: React.FC<Props> = props => {
+  const { activity, activityIndex } = props;
+
+  const totalExercises = activity.images.length;
+
+  const { isCompletedActivitiesContext, setIsCompletedActivitiesContext } =
+    useActivitiesContext();
+
+  const { totalExercisesCompleted, setIsCompletedExercise } =
+    useExerciseCompletion(
+      totalExercises,
+      activityIndex,
+      isCompletedActivitiesContext,
+      setIsCompletedActivitiesContext
+    );
+
   const {
     shuffledImages,
     validated,
@@ -26,7 +48,7 @@ export const DragAndDropComponent: React.FC<Props> = ({ activity }) => {
     handleValidation,
     handleDrop,
     handleReset,
-  } = useDragDrop(sentences, images);
+  } = useDragDrop(activity.sentences, activity.images);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -47,33 +69,46 @@ export const DragAndDropComponent: React.FC<Props> = ({ activity }) => {
     }
   };
 
+  React.useEffect(() => {
+    setIsCompletedExercise(validated);
+  }, [validated]);
+
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <article css={activityContainer}>
-        <section css={[activityContent, innerClasses.dragDropContainer]}>
+    <article css={activityContainer}>
+      <header css={activityHeader}>
+        <ActivityProgressHeader
+          title="Vocabulario"
+          subtitle="Coloca la imagen en su lugar"
+          totalExercises={totalExercises}
+          completed={totalExercisesCompleted}
+        />
+      </header>
+
+      <DndContext onDragEnd={handleDragEnd}>
+        <main css={[activityContent, innerClasses.dragDropContainer]}>
           <SentenceListComponent
-            sentences={sentences}
+            sentences={activity.sentences}
             validated={validated}
             droppedItems={droppedItems}
           />
           <ImageListComponent images={shuffledImages} />
-        </section>
+        </main>
+      </DndContext>
 
-        <section css={repeatAndCorrectButtons}>
-          <Button
-            variant="contained"
-            css={repeatingButton}
-            startIcon={<LoopIcon />}
-            onClick={handleReset}
-          >
-            Repetir
-          </Button>
+      <footer css={repeatAndCorrectButtons}>
+        <Button
+          variant="contained"
+          css={repeatingButton}
+          startIcon={<LoopIcon />}
+          onClick={handleReset}
+        >
+          Repetir
+        </Button>
 
-          <Button variant="contained" onClick={handleValidation}>
-            Corregir
-          </Button>
-        </section>
-      </article>
-    </DndContext>
+        <Button variant="contained" onClick={handleValidation}>
+          Corregir
+        </Button>
+      </footer>
+    </article>
   );
 };

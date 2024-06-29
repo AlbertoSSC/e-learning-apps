@@ -26,6 +26,7 @@ export const voiceRecognition = (
   recognitionRef: MutableRefObject<SpeechRecognition | null>,
   setIsListening: Dispatch<SetStateAction<boolean>>,
   setSpokenText: Dispatch<SetStateAction<string>>,
+  setIsCorrectSpeaking: Dispatch<SetStateAction<boolean[]>>,
   currentCard: number,
   activity: PushToSpeakActivity,
   words: string[]
@@ -73,11 +74,21 @@ export const voiceRecognition = (
 
     if (normalizedSpokenText === normalizedExpectedText) {
       setSpokenText('¡Correcto!');
+      setIsCorrectSpeaking(prevState => {
+        const newState = [...prevState];
+        newState[currentCard] = true;
+        return newState;
+      });
     } else {
       setSpokenText(
         `Inténtalo de nuevo.
          Parece que has dicho: "${getSpokenText}"`
       );
+      setIsCorrectSpeaking(prevState => {
+        const newState = [...prevState];
+        newState[currentCard] = false;
+        return newState;
+      });
     }
 
     stopRecognition();

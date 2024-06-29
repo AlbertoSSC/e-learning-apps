@@ -9,7 +9,8 @@ import { activityContent } from '@/styles';
 import * as innerClasses from './profile.styles';
 
 export const ProfileComponent = () => {
-  const { totalActivities, totalCompletedActivities } = useActivitiesContext();
+  const { totalActivitiesContext, totalCompletedActivitiesContext } =
+    useActivitiesContext();
 
   return (
     <article css={innerClasses.progressContainer}>
@@ -23,13 +24,15 @@ export const ProfileComponent = () => {
           fontWeight="bold"
           color={theme.palette.primary.main}
         >
-          {Math.round((totalCompletedActivities / totalActivities) * 100)}%
-          Completado
+          {Math.round(
+            (totalCompletedActivitiesContext / totalActivitiesContext) * 100
+          )}
+          % Completado
         </Typography>
 
         <LinearProgressWithLabel
-          completedactivities={totalCompletedActivities}
-          totalactivities={totalActivities}
+          completedactivities={totalCompletedActivitiesContext}
+          totalactivitiescontext={totalActivitiesContext}
         />
       </section>
 

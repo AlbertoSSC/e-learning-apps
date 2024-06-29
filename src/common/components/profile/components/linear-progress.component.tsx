@@ -22,10 +22,11 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 export const LinearProgressWithLabel = (
   props: LinearProgressProps & {
     completedactivities: number;
-    totalactivities: number;
+    totalactivitiescontext: number;
   }
 ) => {
-  const value = (props.completedactivities / props.totalactivities) * 100;
+  const value =
+    (props.completedactivities / props.totalactivitiescontext) * 100;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -35,7 +36,7 @@ export const LinearProgressWithLabel = (
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
           props.completedactivities
-        )}/${props.totalactivities}`}</Typography>
+        )}/${props.totalactivitiescontext}`}</Typography>
       </Box>
     </Box>
   );

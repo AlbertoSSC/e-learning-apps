@@ -9,7 +9,7 @@ import * as innerClasses from '../drag-drop.styles';
 interface Props {
   index: number;
   sentence: string;
-  validated: number | null;
+  validated: boolean | null;
   droppedItems: (string | null)[];
 }
 
@@ -28,7 +28,6 @@ export const SentenceToDrop: React.FC<Props> = ({
         key={`droppable-${index}`}
         id={`droppable-${index}`}
         validated={validated}
-        index={index}
       >
         {droppedItem ? (
           <div css={innerClasses.droppedItem}>{droppedItem}</div>

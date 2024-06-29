@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 interface Props {
   inputIndex: number;
   correctAnswers: string[];
-  isCorrectAnswer: boolean | undefined;
+  isCorrectAnswer: boolean | null;
   inputValues: string[];
   setInputValues: React.Dispatch<React.SetStateAction<string[]>>;
 }
@@ -40,17 +40,11 @@ export const UserTextInput: React.FC<Props> = props => {
       id={`userInput${inputIndex}`}
       value={inputValues[inputIndex]}
       onChange={handleNewInput}
-      color={isCorrectAnswer === true ? 'success' : 'primary'}
       error={isCorrectAnswer === false}
       helperText={isCorrectSpanStyle ? `${correctAnswers[0]}` : ''}
       sx={{
         '& .MuiFormHelperText-root': {
-          color:
-            isCorrectAnswer === true
-              ? 'green'
-              : isCorrectAnswer === false
-              ? 'red'
-              : 'inherit',
+          color: isCorrectAnswer === false ? 'error' : 'primary',
         },
       }}
     />

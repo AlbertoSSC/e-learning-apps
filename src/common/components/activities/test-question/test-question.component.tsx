@@ -3,27 +3,44 @@ import React from 'react';
 import { Button, List, ListItem } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
-import { TestQuestionActivity } from '@/core';
+import { TestQuestionActivity, useActivitiesContext } from '@/core';
 import { Question } from './components/question';
 import { useTestQuestionState } from './hooks/use-test-question';
+import { useExerciseCompletion } from '../hooks/use-exercise-completion';
+import { ActivityProgressHeader } from '../components/activity-progression-header';
+import { CheckIconAnimation } from '@/common/utils';
 
 import {
   activityContainer,
   activityContent,
+  activityHeader,
   repeatAndCorrectButtons,
   repeatingButton,
 } from '@/styles';
-import * as innerClasses from './test-question.styles';
-import { CheckIconAnimation } from '@/common/utils';
 import theme from '@/styles/themes/customMUI.theme';
+import * as innerClasses from './test-question.styles';
 
-export interface TestQuestionComponentProps {
+export interface Props {
   activity: TestQuestionActivity;
+  activityIndex: number;
 }
 
-export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
-  activity,
-}) => {
+export const TestQuestionComponent: React.FC<Props> = props => {
+  const { activity, activityIndex } = props;
+
+  const totalExercises = activity.sentenceList.length;
+
+  const { isCompletedActivitiesContext, setIsCompletedActivitiesContext } =
+    useActivitiesContext();
+
+  const { totalExercisesCompleted, setIsCompletedExercise } =
+    useExerciseCompletion(
+      totalExercises,
+      activityIndex,
+      isCompletedActivitiesContext,
+      setIsCompletedActivitiesContext
+    );
+
   const {
     values,
     answersCorrection,
@@ -33,21 +50,30 @@ export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
     handleReset,
   } = useTestQuestionState(activity);
 
-  const correctionColorStyle = (index: number): string => {
-    if (answersCorrection[index] === true) return theme.palette.success.main;
-    if (answersCorrection[index] === false) return theme.palette.error.main;
-    return theme.palette.primary.main;
-  };
+  const correctionColorStyle = (index: number): string =>
+    answersCorrection[index] === false
+      ? theme.palette.error.main
+      : theme.palette.primary.main;
 
-  const formErrorStyle = (index: number): boolean => {
-    if (answersCorrection[index] === true) return false;
-    if (answersCorrection[index] === false) return true;
-    return false;
-  };
+  const formErrorStyle = (index: number): boolean =>
+    answersCorrection[index] === false ? true : false;
+
+  React.useEffect(() => {
+    setIsCompletedExercise(answersCorrection);
+  }, [answersCorrection]);
 
   return (
     <article css={activityContainer}>
-      <section css={[activityContent, innerClasses.testContainer]}>
+      <header css={activityHeader}>
+        <ActivityProgressHeader
+          title="Test"
+          subtitle="Responde correctamente"
+          totalExercises={totalExercises}
+          completed={totalExercisesCompleted}
+        />
+      </header>
+
+      <main css={[activityContent, innerClasses.testContainer]}>
         <List>
           {activity.sentenceList.map((sentence, index) => (
             <ListItem key={`test-sentence-${index}`}>
@@ -68,9 +94,9 @@ export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
             </ListItem>
           ))}
         </List>
-      </section>
+      </main>
 
-      <section css={repeatAndCorrectButtons}>
+      <footer css={repeatAndCorrectButtons}>
         <Button
           variant="contained"
           css={repeatingButton}
@@ -82,7 +108,7 @@ export const TestQuestionComponent: React.FC<TestQuestionComponentProps> = ({
         <Button variant="contained" onClick={handleValidation}>
           Corregir
         </Button>
-      </section>
+      </footer>
     </article>
   );
 };

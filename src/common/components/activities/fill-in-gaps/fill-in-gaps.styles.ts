@@ -1,29 +1,27 @@
 import { css } from '@emotion/react';
 
-export const innerClasses = {
-  sentenceContainer: css`
-    padding: 2rem;
+export const sentenceContainer = css`
+  padding: 2rem;
 
-    &.MuiList-root {
-      display: flex;
-      flex-direction: column;
-    }
-  `,
+  &.MuiList-root {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
-  inputWidth: css`
-    padding-bottom: 0.5rem;
-    width: 100px;
+export const inputWidth = css`
+  padding-bottom: 0.5rem;
+  width: 100px;
 
-    &.MuiFormControl-root {
-      vertical-align: baseline;
-    }
+  &.MuiFormControl-root {
+    vertical-align: baseline;
+  }
 
-    & .MuiFormHelperText-root {
-      display: flex;
-      justify-content: center;
-    }
-  `,
-};
+  & .MuiFormHelperText-root {
+    display: flex;
+    justify-content: center;
+  }
+`;
 
 export const listItem = css`
   color: #242424;
