@@ -12,9 +12,12 @@ import { useDragDrop } from './hooks/use-drag-drop';
 import { useExerciseCompletion } from '../hooks/use-exercise-completion';
 
 import {
+  activityComponent,
   activityContainer,
   activityContent,
   activityHeader,
+  activityIcon,
+  iconBG,
   repeatAndCorrectButtons,
   repeatingButton,
 } from '@/styles';
@@ -74,41 +77,54 @@ export const DragAndDropComponent: React.FC<Props> = props => {
   }, [validated]);
 
   return (
-    <article css={activityContainer}>
-      <header css={activityHeader}>
-        <ActivityProgressHeader
-          title="Vocabulario"
-          subtitle="Coloca la imagen en su lugar"
-          totalExercises={totalExercises}
-          completed={totalExercisesCompleted}
-        />
-      </header>
-
-      <DndContext onDragEnd={handleDragEnd}>
-        <main css={[activityContent, innerClasses.dragDropContainer]}>
-          <SentenceListComponent
-            sentences={activity.sentences}
-            validated={validated}
-            droppedItems={droppedItems}
+    <>
+      <article css={activityComponent}>
+        <section css={activityIcon}>
+          <div css={iconBG}></div>
+          <img
+            src="src/common/assets/images/letter-v.png"
+            alt="v letter image"
+            css={innerClasses.activityIconStyles}
           />
-          <ImageListComponent images={shuffledImages} />
-        </main>
-      </DndContext>
+        </section>
 
-      <footer css={repeatAndCorrectButtons}>
-        <Button
-          variant="contained"
-          css={repeatingButton}
-          startIcon={<LoopIcon />}
-          onClick={handleReset}
-        >
-          Repetir
-        </Button>
+        <section css={activityContainer}>
+          <header css={activityHeader}>
+            <ActivityProgressHeader
+              title="Vocabulario"
+              subtitle="Coloca la imagen en su lugar"
+              totalExercises={totalExercises}
+              completed={totalExercisesCompleted}
+            />
+          </header>
 
-        <Button variant="contained" onClick={handleValidation}>
-          Corregir
-        </Button>
-      </footer>
-    </article>
+          <DndContext onDragEnd={handleDragEnd}>
+            <main css={[activityContent, innerClasses.dragDropContainer]}>
+              <SentenceListComponent
+                sentences={activity.sentences}
+                validated={validated}
+                droppedItems={droppedItems}
+              />
+              <ImageListComponent images={shuffledImages} />
+            </main>
+          </DndContext>
+
+          <footer css={repeatAndCorrectButtons}>
+            <Button
+              variant="contained"
+              css={repeatingButton}
+              startIcon={<LoopIcon />}
+              onClick={handleReset}
+            >
+              Repetir
+            </Button>
+
+            <Button variant="contained" onClick={handleValidation}>
+              Corregir
+            </Button>
+          </footer>
+        </section>
+      </article>
+    </>
   );
 };

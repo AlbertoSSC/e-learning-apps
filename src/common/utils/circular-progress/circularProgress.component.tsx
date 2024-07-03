@@ -19,8 +19,8 @@ const CircularProgressWithLabel = (
         sx={{
           color: theme =>
             theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+              ? theme.palette.greyColor.light
+              : theme.palette.greyColor.dark,
           top: 0,
           left: 0,
           bottom: 0,
@@ -46,7 +46,7 @@ const CircularProgressWithLabel = (
       />
       <Box
         sx={{
-          top: 0,
+          top: 2,
           left: 0,
           bottom: 0,
           right: 0,

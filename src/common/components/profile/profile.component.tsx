@@ -15,9 +15,7 @@ export const ProfileComponent = () => {
   return (
     <article css={innerClasses.progressContainer}>
       <section css={[activityContent, innerClasses.progressContent]}>
-        <Typography variant="subtitle1" color="text.secondary">
-          Tu progreso
-        </Typography>
+        <Typography variant="inherit">Tu progreso</Typography>
 
         <Typography
           variant="h6"
@@ -38,9 +36,20 @@ export const ProfileComponent = () => {
 
       <section css={innerClasses.profileStyles}>
         {/* <Typography variant="subtitle2">Student</Typography> */}
-        <Avatar sx={{ width: 56, height: 56 }} alt="" src="" />
+        <Avatar
+          sx={{
+            width: 56,
+            height: 56,
+            backgroundColor: theme.palette.secondary.main,
+            marginBottom: '0.2rem',
+          }}
+          alt=""
+          src=""
+        />
         <div css={innerClasses.userStyles}>
-          <Typography variant="h6">UserNickname</Typography>
+          <Typography variant="h6" css={innerClasses.userNameStyles}>
+            UserNickname
+          </Typography>
         </div>
       </section>
     </article>

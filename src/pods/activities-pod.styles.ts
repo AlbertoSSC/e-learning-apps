@@ -7,10 +7,14 @@ export const podArticleStyle = css`
 `;
 
 export const podSectionsStyle = css`
+  display: flex;
+  justify-content: center;
   padding: 1rem;
 `;
 
 export const headerStyles = css`
+  display: flex;
+  justify-content: center;
   padding: 1rem;
   width: 100%;
 `;

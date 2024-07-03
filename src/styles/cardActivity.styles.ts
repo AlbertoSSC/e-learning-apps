@@ -55,7 +55,7 @@ export const cardContainer = css`
 
 export const cardContent = css`
   &.MuiCardContent-root {
-    padding: 0 0 2rem;
+    padding: 0 0 1rem;
   }
 `;
 

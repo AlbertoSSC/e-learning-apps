@@ -11,9 +11,12 @@ import { ActivityProgressHeader } from '../components/activity-progression-heade
 import { CheckIconAnimation } from '@/common/utils';
 
 import {
+  activityComponent,
   activityContainer,
   activityContent,
   activityHeader,
+  activityIcon,
+  iconBG,
   repeatAndCorrectButtons,
   repeatingButton,
 } from '@/styles';
@@ -63,52 +66,63 @@ export const TestQuestionComponent: React.FC<Props> = props => {
   }, [answersCorrection]);
 
   return (
-    <article css={activityContainer}>
-      <header css={activityHeader}>
-        <ActivityProgressHeader
-          title="Test"
-          subtitle="Responde correctamente"
-          totalExercises={totalExercises}
-          completed={totalExercisesCompleted}
+    <article css={activityComponent}>
+      <section css={activityIcon}>
+        <div css={iconBG}></div>
+        <img
+          src="src/common/assets/images/test-Check.png"
+          alt="check image"
+          css={innerClasses.activityIconStyles}
         />
-      </header>
+      </section>
 
-      <main css={[activityContent, innerClasses.testContainer]}>
-        <List>
-          {activity.sentenceList.map((sentence, index) => (
-            <ListItem key={`test-sentence-${index}`}>
-              {answersCorrection[index] === true && (
-                <CheckIconAnimation
-                  customStyles={innerClasses.checkIconCustomStyle}
+      <section css={activityContainer}>
+        <header css={activityHeader}>
+          <ActivityProgressHeader
+            title="Test"
+            subtitle="Responde correctamente"
+            totalExercises={totalExercises}
+            completed={totalExercisesCompleted}
+          />
+        </header>
+
+        <main css={[activityContent, innerClasses.testContainer]}>
+          <List>
+            {activity.sentenceList.map((sentence, index) => (
+              <ListItem key={`test-sentence-${index}`} css={innerClasses.liStyles}>
+                {answersCorrection[index] === true && (
+                  <CheckIconAnimation
+                    customStyles={innerClasses.checkIconCustomStyle}
+                  />
+                )}
+                <Question
+                  sentence={sentence}
+                  index={index}
+                  formErrorStyle={formErrorStyle}
+                  values={values}
+                  handleChange={handleChange}
+                  helpertext={helpertext}
+                  correctionColorStyle={correctionColorStyle}
                 />
-              )}
-              <Question
-                sentence={sentence}
-                index={index}
-                formErrorStyle={formErrorStyle}
-                values={values}
-                handleChange={handleChange}
-                helpertext={helpertext}
-                correctionColorStyle={correctionColorStyle}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </main>
+              </ListItem>
+            ))}
+          </List>
+        </main>
 
-      <footer css={repeatAndCorrectButtons}>
-        <Button
-          variant="contained"
-          css={repeatingButton}
-          startIcon={<LoopIcon />}
-          onClick={handleReset}
-        >
-          Repetir
-        </Button>
-        <Button variant="contained" onClick={handleValidation}>
-          Corregir
-        </Button>
-      </footer>
+        <footer css={repeatAndCorrectButtons}>
+          <Button
+            variant="contained"
+            css={repeatingButton}
+            startIcon={<LoopIcon />}
+            onClick={handleReset}
+          >
+            Repetir
+          </Button>
+          <Button variant="contained" onClick={handleValidation}>
+            Corregir
+          </Button>
+        </footer>
+      </section>
     </article>
   );
 };

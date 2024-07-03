@@ -36,10 +36,13 @@ export const Question: React.FC<Props> = props => {
     helpertext,
     correctionColorStyle,
   } = props;
+
   return (
     <div id="question-container" css={innerClasses.questionContainer}>
       <FormControl error={formErrorStyle(index)} fullWidth>
-        <FormLabel id={`sentence-${index}`}>{sentence.sentence}</FormLabel>
+        <FormLabel id={`sentence-${index}`} css={innerClasses.labelStyles}>
+          {sentence.sentence}
+        </FormLabel>
 
         <RadioGroup
           id="answers"
@@ -47,7 +50,7 @@ export const Question: React.FC<Props> = props => {
           name="answers"
           value={values[index]}
           onChange={e => handleChange(e, index)}
-          >
+        >
           {sentence.options.map((option, optionIndex) => (
             <FormControlLabel
               id={`question-option-${optionIndex}`}

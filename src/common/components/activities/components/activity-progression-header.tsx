@@ -19,15 +19,7 @@ export const ActivityProgressHeader: React.FC<Props> = props => {
     <article css={[activityContent, contentHeader]}>
       <section>
         <Typography variant="h5">{title}</Typography>
-        <Typography variant="inherit" color="#aaa">
-          {subtitle}
-        </Typography>
-        {/* <details style={{color: "#999"}}>
-          <summary>Detalles</summary>
-          <Typography variant="caption" color="text.secondary">
-            {detail}
-          </Typography>
-        </details> */}
+        <Typography variant="inherit">{subtitle}</Typography>
       </section>
 
       <section css={circularProgress}>

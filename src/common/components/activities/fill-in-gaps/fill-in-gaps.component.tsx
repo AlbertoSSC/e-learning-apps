@@ -11,9 +11,12 @@ import { ActivityProgressHeader } from '../components/activity-progression-heade
 import { useExerciseCompletion } from '../hooks/use-exercise-completion';
 
 import {
+  activityComponent,
   activityContainer,
   activityContent,
   activityHeader,
+  activityIcon,
+  iconBG,
   listNumbers,
   repeatAndCorrectButtons,
   repeatingButton,
@@ -59,56 +62,67 @@ export const FillInGapsComponent: React.FC<Props> = props => {
   }, [isCorrectAnswers]);
 
   return (
-    <article css={activityContainer}>
-      <header css={activityHeader}>
-        <ActivityProgressHeader
-          title="Escribir"
-          subtitle="Completa las oraciones"
-          totalExercises={totalExercises}
-          completed={totalExercisesCompleted}
+    <article css={activityComponent}>
+      <section css={activityIcon}>
+        <div css={iconBG}></div>
+        <img
+          src="src/common/assets/images/hand_Writing.png"
+          alt="image of hand holding a pen"
+          css={innerClasses.activityIconStyles}
         />
-      </header>
+      </section>
 
-      <main css={activityContent}>
-        <List component="ol" css={innerClasses.sentenceContainer}>
-          {gapsData.map((item, sentenceIndex) => (
-            <ListItem key={sentenceIndex} css={innerClasses.listItem}>
-              <ListItemText
-                primary={`${sentenceIndex + 1}.`}
-                css={[innerClasses.listItem, listNumbers]}
-              />
-              {isCorrectAnswers[sentenceIndex]?.every(
-                answer => answer === true
-              ) && (
-                <CheckIconAnimation
-                  customStyles={innerClasses.checkIconCustomStyle}
+      <section css={activityContainer}>
+        <header css={activityHeader}>
+          <ActivityProgressHeader
+            title="Escribir"
+            subtitle="Completa las oraciones"
+            totalExercises={totalExercises}
+            completed={totalExercisesCompleted}
+          />
+        </header>
+
+        <main css={activityContent}>
+          <List component="ol" css={innerClasses.sentenceContainer}>
+            {gapsData.map((item, sentenceIndex) => (
+              <ListItem key={sentenceIndex} css={innerClasses.listItem}>
+                <ListItemText
+                  primary={`${sentenceIndex + 1}.`}
+                  css={[innerClasses.listItem, listNumbers]}
                 />
-              )}
-              <GapActivityRow
-                item={item}
-                inputsValues={inputsValues[sentenceIndex]}
-                isCorrectAnswers={isCorrectAnswers[sentenceIndex]}
-                setInputsValues={setInputsValues}
-                sentenceIndex={sentenceIndex}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </main>
+                {isCorrectAnswers[sentenceIndex]?.every(
+                  answer => answer === true
+                ) && (
+                  <CheckIconAnimation
+                    customStyles={innerClasses.checkIconCustomStyle}
+                  />
+                )}
+                <GapActivityRow
+                  item={item}
+                  inputsValues={inputsValues[sentenceIndex]}
+                  isCorrectAnswers={isCorrectAnswers[sentenceIndex]}
+                  setInputsValues={setInputsValues}
+                  sentenceIndex={sentenceIndex}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </main>
 
-      <footer css={repeatAndCorrectButtons}>
-        <Button
-          variant="contained"
-          css={repeatingButton}
-          startIcon={<LoopIcon />}
-          onClick={handleReset}
-        >
-          Repetir
-        </Button>
-        <Button variant="contained" onClick={handleValidate}>
-          Corregir
-        </Button>
-      </footer>
+        <footer css={repeatAndCorrectButtons}>
+          <Button
+            variant="contained"
+            css={repeatingButton}
+            startIcon={<LoopIcon />}
+            onClick={handleReset}
+          >
+            Repetir
+          </Button>
+          <Button variant="contained" onClick={handleValidate}>
+            Corregir
+          </Button>
+        </footer>
+      </section>
     </article>
   );
 };

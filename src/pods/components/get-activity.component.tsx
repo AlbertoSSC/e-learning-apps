@@ -31,17 +31,17 @@ export const getActivity = (activity, index) => {
           activityIndex={index}
         />
       );
-    case 'PushToSpeakActivity':
-      return (
-        <PushToSpeakComponent
-          activity={activity.data as PushToSpeakActivity}
-          activityIndex={index}
-        />
-      );
     case 'FillInGapActivity':
       return (
         <FillInGapsComponent
           activity={activity.data as FillInGapActivity}
+          activityIndex={index}
+        />
+      );
+    case 'PushToSpeakActivity':
+      return (
+        <PushToSpeakComponent
+          activity={activity.data as PushToSpeakActivity}
           activityIndex={index}
         />
       );

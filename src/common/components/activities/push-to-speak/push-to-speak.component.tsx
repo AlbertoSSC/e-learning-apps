@@ -14,8 +14,11 @@ import {
   paginationStyle,
   activityContentCardSlider,
   cardStyle,
-  paginationWidth,
+  footerWidth,
   activityHeader,
+  activityComponent,
+  activityIcon,
+  iconBG,
 } from '@/styles';
 
 interface PushToSpeak {
@@ -86,47 +89,57 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
   }, [isCorrectSpeaking]);
 
   return (
-    <article id="activity-container" css={activityContainer}>
-      <header css={activityHeader}>
-        <ActivityProgressHeader
-          title="Hablar"
-          subtitle="Practica la pronunciación"
-          totalExercises={totalExercises}
-          completed={totalExercisesCompleted}
+    <article css={activityComponent}>
+      <section css={activityIcon}>
+        <div css={iconBG}></div>
+        <img
+          src="src/common/assets/images/mouth-Speaking.png"
+          alt="mouth image"
         />
-      </header>
+      </section>
 
-      <main
-        id="asdfasf"
-        css={[activityContent, activityContentCardSlider(currentCard)]}
-      >
-        {activity.textList.map((text, index) => (
-          <CardComponent
-            key={`${activity.activityId}-card-${index}`}
-            imageUrl={
-              imageList && imageList.length >= 1 ? imageList[index].url : ''
-            }
-            text={text}
-            handleSpeak={handleSpeak}
-            isListening={isListening}
-            handleStopClick={handleStopClick}
-            spokenText={spokenText}
-            animationclass={cardStyle(index === currentCard)}
+      <section css={activityContainer}>
+        <header css={activityHeader}>
+          <ActivityProgressHeader
+            title="Hablar"
+            subtitle="Practica la pronunciación"
+            totalExercises={totalExercises}
+            completed={totalExercisesCompleted}
           />
-        ))}
-      </main>
+        </header>
 
-      {activity.textList.length > 1 && (
-        <footer css={paginationWidth}>
-          <Pagination
-            css={paginationStyle}
-            siblingCount={0}
-            count={activity.textList.length}
-            page={currentCard + 1}
-            onChange={handlePageChange}
-          />
-        </footer>
-      )}
+        <main
+          id="asdfasf"
+          css={[activityContent, activityContentCardSlider(currentCard)]}
+        >
+          {activity.textList.map((text, index) => (
+            <CardComponent
+              key={`${activity.activityId}-card-${index}`}
+              imageUrl={
+                imageList && imageList.length >= 1 ? imageList[index].url : ''
+              }
+              text={text}
+              handleSpeak={handleSpeak}
+              isListening={isListening}
+              handleStopClick={handleStopClick}
+              spokenText={spokenText}
+              animationclass={cardStyle(index === currentCard)}
+            />
+          ))}
+        </main>
+
+        {activity.textList.length > 1 && (
+          <footer css={footerWidth}>
+            <Pagination
+              css={paginationStyle}
+              siblingCount={0}
+              count={activity.textList.length}
+              page={currentCard + 1}
+              onChange={handlePageChange}
+            />
+          </footer>
+        )}
+      </section>
     </article>
   );
 };

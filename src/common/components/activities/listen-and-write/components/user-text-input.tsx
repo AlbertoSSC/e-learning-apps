@@ -33,6 +33,8 @@ export const UserTextInput: React.FC<Props> = props => {
   return (
     <TextField
       focused
+      hiddenLabel
+      size="small"
       autoComplete="off"
       aria-label={`text input ${inputIndex}`}
       variant="filled"

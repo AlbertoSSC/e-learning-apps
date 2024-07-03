@@ -3,9 +3,11 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles/createPalette' {
   interface Palette {
     tertiary: Palette['primary'];
+    greyColor: Palette['primary'];
   }
   interface PaletteOptions {
     tertiary: PaletteOptions['primary'];
+    greyColor: PaletteOptions['primary'];
   }
 }
 
@@ -41,6 +43,16 @@ const theme = createTheme({
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.greyColor.main,
+        }),
+        button: {
+          color: 'white',
+        },
+      },
+    },
   },
 
   palette: {
@@ -50,25 +62,25 @@ const theme = createTheme({
       light: '#8ECAE6',
     },
     secondary: {
-      main: '#ffc300',
+      main: '#ffc107',
 
-      dark: '#EE7214',
-      light: '#ffd60a',
-      contrastText: '#242105',
+      dark: '#ff8f00',
+      light: '#ffe082',
+      contrastText: '#242424',
     },
     tertiary: {
       main: '#7ae582',
 
       dark: '#25a18e',
       light: '#9fffcb',
-      contrastText: '#242105',
+      contrastText: '#242424',
     },
     success: {
       main: '#4caf50',
 
       dark: '#2d6930',
       light: '#a5d7a7',
-      contrastText: '#242105',
+      contrastText: '#242424',
     },
     error: {
       main: '#f44336',
@@ -82,6 +94,13 @@ const theme = createTheme({
       dark: '#556cd6',
       light: '#73c2fb',
       contrastText: '#fff',
+    },
+
+    greyColor: {
+      main: '#656565',
+
+      dark: '#242424',
+      light: '#ededed',
     },
   },
 });

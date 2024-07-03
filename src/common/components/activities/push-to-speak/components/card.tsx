@@ -17,6 +17,7 @@ import MicIcon from '@mui/icons-material/Mic';
 
 import { cardActions, cardContainer, cardContent, cardMedia } from '@/styles';
 import * as innerClasses from '../push-to-speak.styles';
+import { CheckIconAnimation } from '@/common/utils';
 
 interface CardComponentProps {
   imageUrl: string;
@@ -59,6 +60,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
           <>
             <Divider variant="middle" flexItem />
             <Typography m={1} variant="body1" css={innerClasses.spokenText}>
+              {spokenText === '¡Correcto!' && <CheckIconAnimation />}
               {spokenText}
             </Typography>
           </>

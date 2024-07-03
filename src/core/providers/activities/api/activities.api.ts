@@ -18,17 +18,17 @@ import {
 export const getMockData = (): GetActivity[] => {
   const cardListen = cardListenMock as CardListenActivity;
   const listenAndWrite = listenAndWriteMock as ListenAndWriteActivity;
-  const pushToSpeak = pushToSpeakMock as PushToSpeakActivity;
   const fillInGaps = fillInGapsMock as FillInGapActivity;
+  const pushToSpeak = pushToSpeakMock as PushToSpeakActivity;
   const dragAndDrop = dragAndDropMock as DragAndDropActivity;
   const testQuestion = testQuestionMock as TestQuestionActivity;
 
   return [
     { type: 'CardListenActivity', data: cardListen },
-    { type: 'ListenAndWriteActivity', data: listenAndWrite },
-    { type: 'PushToSpeakActivity', data: pushToSpeak },
     { type: 'FillInGapActivity', data: fillInGaps },
-    { type: 'DragAndDropActivity', data: dragAndDrop },
     { type: 'TestQuestionActivity', data: testQuestion },
+    { type: 'PushToSpeakActivity', data: pushToSpeak },
+    { type: 'DragAndDropActivity', data: dragAndDrop },
+    { type: 'ListenAndWriteActivity', data: listenAndWrite },
   ];
 };

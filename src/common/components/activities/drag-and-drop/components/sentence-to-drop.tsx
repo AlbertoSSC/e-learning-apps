@@ -29,9 +29,7 @@ export const SentenceToDrop: React.FC<Props> = ({
         id={`droppable-${index}`}
         validated={validated}
       >
-        {droppedItem ? (
-          <div css={innerClasses.droppedItem}>{droppedItem}</div>
-        ) : null}
+        {droppedItem ? <div>{droppedItem}</div> : null}
       </Droppable>
     </div>
   );

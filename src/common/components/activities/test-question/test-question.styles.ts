@@ -1,22 +1,22 @@
+import theme from '@/styles/themes/customMUI.theme';
 import { css } from '@emotion/react';
 
 export const testContainer = css`
   text-align: left;
-  padding: 1.5rem;
+  padding: 0 2rem;
   width: fit-content;
   min-width: 350px;
 `;
 
 export const questionContainer = css`
-  padding: 1rem;
   width: 100%;
 `;
 
 export const option = (color: string) => css`
-  background-color: #ebebeb;
+  background-color: ${theme.palette.greyColor.light};
   margin: 0.1rem;
   border-radius: 24px;
-  color: #242424;
+  color: ${theme.palette.greyColor.main};
 
   &.MuiFormControlLabel-root {
     margin-left: 0;
@@ -29,6 +29,22 @@ export const option = (color: string) => css`
 `;
 
 export const checkIconCustomStyle = css`
-  top: 24px;
-  left: -5px;
+  top: 7px;
+  left: -20px;
+`;
+
+export const labelStyles = css`
+  padding-bottom: 0.3rem;
+  color: ${theme.palette.greyColor.main};
+`;
+
+export const activityIconStyles = css`
+  top: 8px;
+`;
+
+export const liStyles = css`
+  padding-bottom: 2rem;
+  &:last-child {
+    padding-bottom: 0;
+  }
 `;

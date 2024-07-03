@@ -11,12 +11,13 @@ import {
   Typography,
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import { AudioPlayer } from '@/common';
 import { CardText } from '@/core/models';
 
 import { cardActions, cardContainer, cardContent, cardMedia } from '@/styles';
-import * as innerClasses from '../card-listen.style';
+import * as innerClasses from '../card-listen.styles';
 
 interface Props {
   card: CardText;
@@ -32,15 +33,19 @@ export const CardComponent: React.FC<Props> = props => {
     Record<string, HTMLButtonElement | null>
   >({});
 
+  const [closeIcon, setCloseIcon] = React.useState(false);
+
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement>,
     cardId: string
   ) => {
     setAnchorElMap({ ...anchorElMap, [cardId]: event.currentTarget });
+    setCloseIcon(true);
   };
 
   const handlePopoverClose = (cardId: string) => {
     setAnchorElMap({ ...anchorElMap, [cardId]: null });
+    setCloseIcon(false);
   };
 
   const handleAudioClick = () => {
@@ -76,8 +81,12 @@ export const CardComponent: React.FC<Props> = props => {
                 onClick={e => handleClick(e, card.id)}
                 css={innerClasses.englishButton}
               >
-                <VisibilityIcon aria-label="visibility icon" />
-                <Typography>English</Typography>
+                {!closeIcon ? (
+                  <VisibilityIcon aria-label="visibility icon" />
+                ) : (
+                  <HighlightOffIcon aria-label="close icon" />
+                )}
+                <Typography variant="button">English</Typography>
               </Button>
 
               <Popover
@@ -94,7 +103,7 @@ export const CardComponent: React.FC<Props> = props => {
                   horizontal: 'center',
                 }}
               >
-                <Typography css={innerClasses.englishPopover}>
+                <Typography variant="h6" css={innerClasses.englishPopover}>
                   {card.englishText}
                 </Typography>
               </Popover>

@@ -28,7 +28,7 @@ export const SingleAudioComponent: React.FC<Props> = props => {
         <AudioPlayer audioUrl={audioUrl} />
       </section>
 
-      <section css={innerClasses.inputWidth}>
+      <section css={innerClasses.inputStyles}>
         <UserTextInput
           inputIndex={index}
           correctAnswers={correctAnswers}
