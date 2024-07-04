@@ -16,7 +16,7 @@ export const congratsComponent = css`
     top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: entry 2s ease;
+    animation: entry 2s ease forwards;
     color: ${theme.palette.primary.main};
   }
 
@@ -67,11 +67,11 @@ export const imagesContainer = css`
   transform: translate(-50%, -50%);
 
   display: flex;
-  min-width: 50vw;
+  width: 576px;
   justify-content: space-between;
 
   perspective: 100px;
-  
+
   img {
     max-width: 200px;
 

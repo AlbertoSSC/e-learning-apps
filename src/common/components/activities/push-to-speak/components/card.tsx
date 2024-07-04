@@ -59,8 +59,8 @@ const CardComponent: React.FC<CardComponentProps> = ({
         {spokenText && (
           <>
             <Divider variant="middle" flexItem />
-            <Typography m={1} variant="body1" css={innerClasses.spokenText}>
-              {spokenText === '¡Correcto!' && <CheckIconAnimation />}
+            {spokenText === '¡Correcto!' && <CheckIconAnimation customStyles={innerClasses.checkIconStyles} />}
+            <Typography m={3} variant="body1" css={innerClasses.spokenText}>
               {spokenText}
             </Typography>
           </>
