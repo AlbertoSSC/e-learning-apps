@@ -8,7 +8,7 @@ interface Props extends PropsWithChildren {}
 export const ActivitiesContextProvider: React.FC<Props> = props => {
   const { children } = props;
 
-  const [totalActivitiesContext, setTotalActivitiesContext] = React.useState(0);
+  const [totalActivitiesContext, setTotalActivitiesContext] = React.useState(1);
 
   const [isCompletedActivitiesContext, setIsCompletedActivitiesContext] =
     React.useState<(boolean | null)[]>([]);

@@ -35,7 +35,6 @@ export const ProfileComponent = () => {
       </section>
 
       <section css={innerClasses.profileStyles}>
-        {/* <Typography variant="subtitle2">Student</Typography> */}
         <Avatar
           sx={{
             width: 56,
@@ -50,7 +49,7 @@ export const ProfileComponent = () => {
         />
         <div css={innerClasses.userStyles}>
           <Typography variant="h6" css={innerClasses.userNameStyles}>
-            UserNickname
+            UserName
           </Typography>
         </div>
       </section>

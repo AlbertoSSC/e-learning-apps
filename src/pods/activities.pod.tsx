@@ -1,16 +1,22 @@
 import React from 'react';
 
 import { ProfileComponent } from '@/common';
+import { GetActivity } from '@/core';
+
 import { getMockData } from '@/core/providers/activities/api';
 import { getActivity } from './components/get-activity.component';
 import { useActivitiesContext } from '@/core/providers/activities/activitiesContext.provider';
 
 import * as innerClasse from './activities-pod.styles';
-import { GetActivity } from '@/core';
+import { CongratsComponent } from './components/congrats.component';
 
 export const ActivitiesPod = () => {
-  const { setTotalActivitiesContext, setIsCompletedActivitiesContext } =
-    useActivitiesContext();
+  const {
+    setTotalActivitiesContext,
+    setIsCompletedActivitiesContext,
+    totalActivitiesContext,
+    totalCompletedActivitiesContext,
+  } = useActivitiesContext();
 
   const [activities, setActivities] = React.useState<GetActivity[]>([]);
 
@@ -26,6 +32,11 @@ export const ActivitiesPod = () => {
 
   return (
     <>
+      <CongratsComponent
+        totalActivities={totalActivitiesContext}
+        activitiesCompleted={totalCompletedActivitiesContext}
+      />
+
       <header css={innerClasse.headerStyles}>
         <ProfileComponent />
       </header>
