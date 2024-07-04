@@ -70,7 +70,7 @@ export const TestQuestionComponent: React.FC<Props> = props => {
       <section css={activityIcon}>
         <div css={iconBG}></div>
         <img
-          src="src/common/assets/images/test-Check.png"
+          src="/assets/images/activities_icons/test-Check.png"
           alt="check image"
           css={innerClasses.activityIconStyles}
         />
@@ -89,7 +89,10 @@ export const TestQuestionComponent: React.FC<Props> = props => {
         <main css={[activityContent, innerClasses.testContainer]}>
           <List>
             {activity.sentenceList.map((sentence, index) => (
-              <ListItem key={`test-sentence-${index}`} css={innerClasses.liStyles}>
+              <ListItem
+                key={`test-sentence-${index}`}
+                css={innerClasses.liStyles}
+              >
                 {answersCorrection[index] === true && (
                   <CheckIconAnimation
                     customStyles={innerClasses.checkIconCustomStyle}

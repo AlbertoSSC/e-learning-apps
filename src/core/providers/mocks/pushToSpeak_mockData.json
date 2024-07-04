@@ -5,15 +5,15 @@
   "imageList": [
     {
       "name": "",
-      "url": "src/common/components/activities/push-to-speak/assets/images/tongue.jpeg"
+      "url": "/assets/images/tongue.jpeg"
     },
     {
       "name": "",
-      "url": "src/common/components/activities/push-to-speak/assets/images/hello.jpeg"
+      "url": "/assets/images/hello2.jpeg"
     },
     {
       "name": "",
-      "url": "src/common/components/activities/push-to-speak/assets/images/car.jpg"
+      "url": "/assets/images/car.jpg"
     }
   ],
   "textList": ["Lengua", "Hola", "Coche"],

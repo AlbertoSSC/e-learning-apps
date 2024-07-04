@@ -76,7 +76,7 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
       <section css={activityIcon}>
         <div css={iconBG}></div>
         <img
-          src="src/common/assets/images/listening-Writing.png"
+          src="/assets/images/activities_icons/listening-Writing.png"
           alt="image of hand writing and an ear"
           css={innerClasses.activityIconStyles}
         />

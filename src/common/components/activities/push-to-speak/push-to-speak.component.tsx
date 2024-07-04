@@ -93,7 +93,7 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
       <section css={activityIcon}>
         <div css={iconBG}></div>
         <img
-          src="src/common/assets/images/mouth-Speaking.png"
+          src="/assets/images/activities_icons/mouth-Speaking.png"
           alt="mouth image"
         />
       </section>

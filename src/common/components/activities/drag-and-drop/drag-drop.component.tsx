@@ -82,7 +82,7 @@ export const DragAndDropComponent: React.FC<Props> = props => {
         <section css={activityIcon}>
           <div css={iconBG}></div>
           <img
-            src="src/common/assets/images/letter-v.png"
+            src="/assets/images/activities_icons/letter-v.png"
             alt="v letter image"
             css={innerClasses.activityIconStyles}
           />

@@ -66,7 +66,7 @@ export const FillInGapsComponent: React.FC<Props> = props => {
       <section css={activityIcon}>
         <div css={iconBG}></div>
         <img
-          src="src/common/assets/images/hand_Writing.png"
+          src="/assets/images/activities_icons/hand_Writing.png"
           alt="image of hand holding a pen"
           css={innerClasses.activityIconStyles}
         />
