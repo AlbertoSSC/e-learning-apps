@@ -42,9 +42,11 @@ export const ProfileComponent = () => {
             height: 56,
             backgroundColor: theme.palette.secondary.main,
             marginBottom: '0.2rem',
+            borderRadius: '0.5rem',
           }}
-          alt=""
-          src=""
+          alt="avatar image"
+          src="/assets/images/avatar.webp"
+          variant="square"
         />
         <div css={innerClasses.userStyles}>
           <Typography variant="h6" css={innerClasses.userNameStyles}>
