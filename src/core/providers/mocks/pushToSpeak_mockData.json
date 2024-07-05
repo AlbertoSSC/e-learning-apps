@@ -5,15 +5,15 @@
   "imageList": [
     {
       "name": "",
-      "url": "/assets/images/tongue.jpeg"
+      "url": "/assets/images/tongue.webp"
     },
     {
       "name": "",
-      "url": "/assets/images/hello2.jpeg"
+      "url": "/assets/images/hello2.webp"
     },
     {
       "name": "",
-      "url": "/assets/images/car.jpg"
+      "url": "/assets/images/car.webp"
     }
   ],
   "textList": ["Lengua", "Hola", "Coche"],

@@ -15,9 +15,5 @@ const config = {
 };
 
 export const ConfettiComponent = congrats => {
-  return (
-    <div id="confetti" style={{ zIndex: 999, display: 'flex', justifyContent: 'center' }}>
-      <Confetti active={congrats} config={config} />
-    </div>
-  )
+  return <Confetti active={congrats} config={config} />;
 };

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
 import Confetti from 'react-dom-confetti';
 
 import { Backdrop, Button, Divider, Paper } from '@mui/material';
+
 import * as innerClasses from './congratsComponent.styles';
 
 interface Props {
@@ -12,7 +14,7 @@ interface Props {
 export const CongratsComponent: React.FC<Props> = props => {
   const { totalActivities, activitiesCompleted } = props;
 
-  const [showBackdrop, setShowBackdrop] = useState(true);
+  const [showBackdrop, setShowBackdrop] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
   const handleClose = () => {

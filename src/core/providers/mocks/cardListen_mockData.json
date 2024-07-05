@@ -7,7 +7,7 @@
       "id": "1",
       "image": {
         "name": "persona-saludando",
-        "url": "/assets/images/hello.jpeg"
+        "url": "/assets/images/hello.webp"
       },
       "audioUrl": "/assets/audios/hola-buenos-dias.m4a",
       "spanishText": "Hola buenos días",
@@ -17,7 +17,7 @@
       "id": "2",
       "image": {
         "name": "persona saludando 02",
-        "url": "/assets/images/comoestas.jpeg"
+        "url": "/assets/images/comoestas.webp"
       },
       "audioUrl": "/assets/audios/como-estas.m4a",
       "spanishText": "¿Cómo estas?",
@@ -27,7 +27,7 @@
       "id": "3",
       "image": {
         "name": "persona saludando 03",
-        "url": "/assets/images/muybiengracias.jpeg"
+        "url": "/assets/images/muybiengracias.webp"
       },
       "audioUrl": "/assets/audios/muy-bien-y-tu.m4a",
       "spanishText": "Muy bien ¿y tú?",
