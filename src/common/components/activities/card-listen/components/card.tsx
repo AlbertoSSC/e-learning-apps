@@ -62,7 +62,7 @@ export const CardComponent: React.FC<Props> = props => {
         <CardMedia
           component="img"
           image={card.image.url}
-          alt={`${card.image.name} image`}
+          alt={card.image.name}
           css={cardMedia}
         />
         <CardActions css={cardActions} onClick={handleAudioClick}>

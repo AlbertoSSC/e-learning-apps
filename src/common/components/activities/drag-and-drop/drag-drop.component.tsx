@@ -18,7 +18,7 @@ import {
   activityHeader,
   activityIcon,
   iconBG,
-  repeatAndCorrectButtons,
+  buttonsContainer,
   repeatingButton,
 } from '@/styles';
 import * as innerClasses from './drag-drop.styles';
@@ -83,7 +83,7 @@ export const DragAndDropComponent: React.FC<Props> = props => {
           <div css={iconBG}></div>
           <img
             src="/assets/images/activities_icons/letter-v.png"
-            alt="v letter image"
+            alt="  of the letter v"
             css={innerClasses.activityIconStyles}
           />
         </section>
@@ -109,7 +109,7 @@ export const DragAndDropComponent: React.FC<Props> = props => {
             </main>
           </DndContext>
 
-          <footer css={repeatAndCorrectButtons}>
+          <footer css={buttonsContainer}>
             <Button
               variant="contained"
               css={repeatingButton}

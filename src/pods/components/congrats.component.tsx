@@ -56,7 +56,7 @@ export const CongratsComponent: React.FC<Props> = props => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              color: '#fff',
+              backdropFilter: 'blur(2px)',
               zIndex: theme => theme.zIndex.drawer + 1,
             }}
             open={showBackdrop}
@@ -74,10 +74,13 @@ export const CongratsComponent: React.FC<Props> = props => {
               </Paper>
 
               <div css={innerClasses.imagesContainer}>
-                <img src="/assets/images/ok-man.webp" alt="man say ok image" />
+                <img
+                  src="/assets/images/ok-man.webp"
+                  alt="  of a man saying ok"
+                />
                 <img
                   src="/assets/images/ok-woman.webp"
-                  alt="woman say ok image"
+                  alt="  of a woman saying ok"
                 />
               </div>
 

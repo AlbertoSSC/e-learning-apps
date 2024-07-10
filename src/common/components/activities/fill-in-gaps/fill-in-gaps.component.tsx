@@ -18,7 +18,7 @@ import {
   activityIcon,
   iconBG,
   listNumbers,
-  repeatAndCorrectButtons,
+  buttonsContainer,
   repeatingButton,
 } from '@/styles';
 import * as innerClasses from './fill-in-gaps.styles';
@@ -67,7 +67,7 @@ export const FillInGapsComponent: React.FC<Props> = props => {
         <div css={iconBG}></div>
         <img
           src="/assets/images/activities_icons/hand_Writing.png"
-          alt="image of hand holding a pen"
+          alt="  of a hand holding a pen"
           css={innerClasses.activityIconStyles}
         />
       </section>
@@ -109,7 +109,7 @@ export const FillInGapsComponent: React.FC<Props> = props => {
           </List>
         </main>
 
-        <footer css={repeatAndCorrectButtons}>
+        <footer css={buttonsContainer}>
           <Button
             variant="contained"
             css={repeatingButton}

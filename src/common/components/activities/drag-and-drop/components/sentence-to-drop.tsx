@@ -23,7 +23,9 @@ export const SentenceToDrop: React.FC<Props> = ({
 
   return (
     <div id={`sentence-text-${index}`} css={innerClasses.sentenceText}>
-      <Typography variant="h6">{sentence}</Typography>
+      <Typography variant="h6" component={'span'}>
+        {sentence}
+      </Typography>
       <Droppable
         key={`droppable-${index}`}
         id={`droppable-${index}`}

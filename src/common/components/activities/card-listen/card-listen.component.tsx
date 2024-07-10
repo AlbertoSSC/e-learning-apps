@@ -58,7 +58,7 @@ export const CardListenComponent: React.FC<Props> = props => {
           <div css={iconBG}></div>
           <img
             src="/assets/images/activities_icons/ear-Listening.png"
-            alt="ear image"
+            alt="  of an ear"
             css={innerClasses.activityIconStyles}
           />
         </section>

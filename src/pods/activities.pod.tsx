@@ -36,7 +36,7 @@ export const ActivitiesPod = () => {
         totalActivities={totalActivitiesContext}
         activitiesCompleted={totalCompletedActivitiesContext}
       />
-
+      <h1>e-Learning Apps</h1>
       <header css={innerClasse.headerStyles}>
         <ProfileComponent />
       </header>

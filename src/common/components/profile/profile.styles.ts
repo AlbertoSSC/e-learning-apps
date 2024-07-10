@@ -8,6 +8,7 @@ export const progressContainer = css`
   @media (width < 800px) {
     max-width: 650px;
   }
+
   width: 100%;
 
   border-radius: 24px;
@@ -25,6 +26,11 @@ export const profileStyles = css`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 1rem;
+
+  @media (width < 800px) {
+    padding: 0.5rem;
+  }
 `;
 
 export const progressContent = css`
@@ -35,6 +41,10 @@ export const progressContent = css`
     font-weight: 500;
     line-height: 1.2rem;
   }
+
+  h6 {
+    line-height: 22px;
+  }
 `;
 
 export const userStyles = css`
@@ -44,4 +54,8 @@ export const userStyles = css`
 export const userNameStyles = css`
   font-weight: bold;
   color: ${theme.palette.greyColor.main};
+  line-height: 1rem;
+  padding-block: 0.5rem 0;
+
+  white-space: nowrap;
 `;

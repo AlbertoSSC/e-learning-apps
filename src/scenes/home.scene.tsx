@@ -1,12 +1,9 @@
-import { ActivitiesContextProvider } from '@/core/providers/activities/activitiesContext.provider';
-import { ActivitiesPod } from '@/pods/activities.pod';
+import { WelcomePod } from '@/pods/welcome.pod';
 
 export const HomeScene: React.FC = () => {
   return (
     <>
-      <ActivitiesContextProvider>
-        <ActivitiesPod />
-      </ActivitiesContextProvider>
+        <WelcomePod />
     </>
   );
 };

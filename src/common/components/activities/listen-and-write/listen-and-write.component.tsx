@@ -18,7 +18,7 @@ import {
   activityHeader,
   activityIcon,
   iconBG,
-  repeatAndCorrectButtons,
+  buttonsContainer,
   repeatingButton,
 } from '@/styles';
 import * as innerClasses from './listen-and-write.styles';
@@ -77,7 +77,7 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
         <div css={iconBG}></div>
         <img
           src="/assets/images/activities_icons/listening-Writing.png"
-          alt="image of hand writing and an ear"
+          alt="  of a writing hand and an ear"
           css={innerClasses.activityIconStyles}
         />
       </section>
@@ -116,7 +116,7 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
           </List>
         </main>
 
-        <footer css={repeatAndCorrectButtons}>
+        <footer css={buttonsContainer}>
           <Button
             variant="contained"
             css={repeatingButton}

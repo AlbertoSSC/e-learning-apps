@@ -22,6 +22,7 @@ import { CheckIconAnimation } from '@/common/utils';
 interface CardComponentProps {
   imageUrl: string;
   text: string;
+  altText: string;
   handleSpeak: () => void;
   isListening: boolean;
   handleStopClick: () => void;
@@ -32,6 +33,7 @@ interface CardComponentProps {
 const CardComponent: React.FC<CardComponentProps> = ({
   imageUrl,
   text,
+  altText,
   handleSpeak,
   isListening,
   handleStopClick,
@@ -48,7 +50,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
         <CardMedia
           component="img"
           image={imageUrl}
-          alt={`${text} image`}
+          alt={altText}
           css={cardMedia}
         />
 
@@ -59,7 +61,9 @@ const CardComponent: React.FC<CardComponentProps> = ({
         {spokenText && (
           <>
             <Divider variant="middle" flexItem />
-            {spokenText === '¡Correcto!' && <CheckIconAnimation customStyles={innerClasses.checkIconStyles} />}
+            {spokenText === '¡Correcto!' && (
+              <CheckIconAnimation customStyles={innerClasses.checkIconStyles} />
+            )}
             <Typography m={3} variant="body1" css={innerClasses.spokenText}>
               {spokenText}
             </Typography>

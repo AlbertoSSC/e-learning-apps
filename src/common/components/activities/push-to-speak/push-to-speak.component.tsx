@@ -94,7 +94,7 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
         <div css={iconBG}></div>
         <img
           src="/assets/images/activities_icons/mouth-Speaking.png"
-          alt="mouth image"
+          alt="  of a mouth"
         />
       </section>
 
@@ -108,10 +108,7 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
           />
         </header>
 
-        <main
-          id="asdfasf"
-          css={[activityContent, activityContentCardSlider(currentCard)]}
-        >
+        <main css={[activityContent, activityContentCardSlider(currentCard)]}>
           {activity.textList.map((text, index) => (
             <CardComponent
               key={`${activity.activityId}-card-${index}`}
@@ -119,6 +116,9 @@ export const PushToSpeakComponent: React.FC<PushToSpeak> = props => {
                 imageList && imageList.length >= 1 ? imageList[index].url : ''
               }
               text={text}
+              altText={
+                imageList && imageList.length >= 1 ? imageList[index].name : ''
+              }
               handleSpeak={handleSpeak}
               isListening={isListening}
               handleStopClick={handleStopClick}

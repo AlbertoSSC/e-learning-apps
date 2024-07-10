@@ -17,7 +17,7 @@ import {
   activityHeader,
   activityIcon,
   iconBG,
-  repeatAndCorrectButtons,
+  buttonsContainer,
   repeatingButton,
 } from '@/styles';
 import theme from '@/styles/themes/customMUI.theme';
@@ -71,7 +71,7 @@ export const TestQuestionComponent: React.FC<Props> = props => {
         <div css={iconBG}></div>
         <img
           src="/assets/images/activities_icons/test-Check.png"
-          alt="check image"
+          alt="  of a check icon"
           css={innerClasses.activityIconStyles}
         />
       </section>
@@ -112,7 +112,7 @@ export const TestQuestionComponent: React.FC<Props> = props => {
           </List>
         </main>
 
-        <footer css={repeatAndCorrectButtons}>
+        <footer css={buttonsContainer}>
           <Button
             variant="contained"
             css={repeatingButton}

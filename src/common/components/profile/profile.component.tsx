@@ -2,6 +2,7 @@ import { Avatar, Typography } from '@mui/material';
 
 import { useActivitiesContext } from '@/core/providers/activities/activitiesContext.provider';
 
+import { getAvatarImages } from '@/pods/components/get-avatar.component';
 import { LinearProgressWithLabel } from './components/linear-progress.component';
 
 import theme from '@/styles/themes/customMUI.theme';
@@ -9,8 +10,12 @@ import { activityContent } from '@/styles';
 import * as innerClasses from './profile.styles';
 
 export const ProfileComponent = () => {
-  const { totalActivitiesContext, totalCompletedActivitiesContext } =
-    useActivitiesContext();
+  const {
+    totalActivitiesContext,
+    totalCompletedActivitiesContext,
+    userNameInput,
+    avatarToShow,
+  } = useActivitiesContext();
 
   return (
     <article css={innerClasses.progressContainer}>
@@ -18,7 +23,8 @@ export const ProfileComponent = () => {
         <Typography variant="inherit">Tu progreso</Typography>
 
         <Typography
-          variant="h6"
+          variant="h5"
+          component={'h2'}
           fontWeight="bold"
           color={theme.palette.primary.main}
         >
@@ -37,19 +43,20 @@ export const ProfileComponent = () => {
       <section css={innerClasses.profileStyles}>
         <Avatar
           sx={{
-            width: 56,
-            height: 56,
-            backgroundColor: theme.palette.secondary.main,
+            width: 72,
+            height: 72,
+            backgroundColor: theme.palette.primary.light,
             marginBottom: '0.2rem',
-            borderRadius: '0.5rem',
+            borderRadius: '50%',
+            border: `4px solid ${theme.palette.primary.dark}`,
           }}
-          alt="avatar image"
-          src="/assets/images/avatar.webp"
+          alt="the user's avatar"
+          src={getAvatarImages[avatarToShow]}
           variant="square"
         />
         <div css={innerClasses.userStyles}>
-          <Typography variant="h6" css={innerClasses.userNameStyles}>
-            UserName
+          <Typography variant="h6" component={"h3"} css={innerClasses.userNameStyles}>
+            {userNameInput}
           </Typography>
         </div>
       </section>

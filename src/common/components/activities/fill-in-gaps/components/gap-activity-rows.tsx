@@ -35,7 +35,7 @@ export const GapActivityRow: React.FC<Props> = ({
               autoComplete="off"
               variant="filled"
               type="text"
-              id={`gap-input-${item.id}`}
+              id={`gap-input-${item.id}-${index}`}
               value={inputsValues[index] || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setInputsValues(prev => {

@@ -8,8 +8,9 @@ interface Props extends PropsWithChildren {}
 export const ActivitiesContextProvider: React.FC<Props> = props => {
   const { children } = props;
 
+  const [userNameInput, setUserNameInput] = React.useState('UserName');
+  const [avatarToShow, setAvatarToShow] = React.useState(0);
   const [totalActivitiesContext, setTotalActivitiesContext] = React.useState(1);
-
   const [isCompletedActivitiesContext, setIsCompletedActivitiesContext] =
     React.useState<(boolean | null)[]>([]);
 
@@ -28,9 +29,13 @@ export const ActivitiesContextProvider: React.FC<Props> = props => {
     <>
       <ActivityContext.Provider
         value={{
+          avatarToShow,
+          userNameInput,
           totalActivitiesContext,
           isCompletedActivitiesContext,
           totalCompletedActivitiesContext,
+          setUserNameInput,
+          setAvatarToShow,
           setTotalActivitiesContext,
           setIsCompletedActivitiesContext,
         }}

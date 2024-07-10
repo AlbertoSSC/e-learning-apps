@@ -18,7 +18,7 @@ export const ActivityProgressHeader: React.FC<Props> = props => {
   return (
     <article css={[activityContent, contentHeader]}>
       <section>
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h5" component={"h4"}>{title}</Typography>
         <Typography variant="inherit">{subtitle}</Typography>
       </section>
 

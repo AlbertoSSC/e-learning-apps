@@ -8,6 +8,11 @@ export const congratsComponent = css`
   text-align: center;
   justify-content: center;
 
+  @media (width < 450px) {
+    max-width: 340px;
+    top: 8%;
+  }
+
   perspective: 100px;
 
   h1 {
@@ -69,6 +74,13 @@ export const imagesContainer = css`
   display: flex;
   width: 576px;
   justify-content: space-between;
+
+  @media (width < 450px) {
+    max-width: 460px;
+    top: 0%;
+    left: 48%;
+    z-index: -1;
+  }
 
   perspective: 100px;
 

@@ -65,7 +65,7 @@ export const contentHeader = css`
   justify-content: space-between;
   align-items: center;
 
-  h5 {
+  h4 {
     color: ${theme.palette.primary.main};
     font-weight: bold;
   }
@@ -91,7 +91,7 @@ export const listNumbers = css`
   }
 `;
 
-export const repeatAndCorrectButtons = css`
+export const buttonsContainer = css`
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -135,6 +135,7 @@ export const activityIcon = css`
 
   width: 100px;
   height: 90px;
+  
   img {
     z-index: 2;
     position: relative;

@@ -38,33 +38,33 @@ export const Question: React.FC<Props> = props => {
   } = props;
 
   return (
-    <div id="question-container" css={innerClasses.questionContainer}>
+    <div css={innerClasses.questionContainer}>
       <FormControl error={formErrorStyle(index)} fullWidth>
         <FormLabel id={`sentence-${index}`} css={innerClasses.labelStyles}>
           {sentence.sentence}
-        </FormLabel>
 
-        <RadioGroup
-          id="answers"
-          aria-label="answers"
-          name="answers"
-          value={values[index]}
-          onChange={e => handleChange(e, index)}
-        >
-          {sentence.options.map((option, optionIndex) => (
-            <FormControlLabel
-              id={`question-option-${optionIndex}`}
-              key={option}
-              value={option}
-              control={<Radio />}
-              label={option}
-              css={innerClasses.option(correctionColorStyle(index))}
-            />
-          ))}
-          {helpertext && (
-            <FormHelperText>Respuesta: {sentence.correctAnswer}</FormHelperText>
-          )}
-        </RadioGroup>
+          <RadioGroup
+            aria-label="options"
+            name={`option-${index}`}
+            value={values[index]}
+            onChange={e => handleChange(e, index)}
+          >
+            {sentence.options.map(option => (
+              <FormControlLabel
+                key={option}
+                value={option}
+                control={<Radio />}
+                label={option}
+                css={innerClasses.option(correctionColorStyle(index))}
+              />
+            ))}
+            {helpertext && (
+              <FormHelperText>
+                Respuesta: {sentence.correctAnswer}
+              </FormHelperText>
+            )}
+          </RadioGroup>
+        </FormLabel>
       </FormControl>
     </div>
   );

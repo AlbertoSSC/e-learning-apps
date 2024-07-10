@@ -5,6 +5,10 @@ export const activityContentCardSlider = (currentCard: number) => css`
   flex-direction: row;
   max-width: 350px;
 
+  @media (width < 400px) {
+    max-width: 290px;
+  }
+
   background-color: transparent;
 
   transform: translateX(${-currentCard * 100}%);

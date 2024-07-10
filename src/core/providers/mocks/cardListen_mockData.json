@@ -6,7 +6,7 @@
     {
       "id": "1",
       "image": {
-        "name": "persona-saludando",
+        "name": "a person saying hello",
         "url": "/assets/images/hello.webp"
       },
       "audioUrl": "/assets/audios/hola-buenos-dias.m4a",
@@ -16,7 +16,7 @@
     {
       "id": "2",
       "image": {
-        "name": "persona saludando 02",
+        "name": "two people talking each other",
         "url": "/assets/images/comoestas.webp"
       },
       "audioUrl": "/assets/audios/como-estas.m4a",
@@ -26,7 +26,7 @@
     {
       "id": "3",
       "image": {
-        "name": "persona saludando 03",
+        "name": "two people, the right one saying ok",
         "url": "/assets/images/muybiengracias.webp"
       },
       "audioUrl": "/assets/audios/muy-bien-y-tu.m4a",

@@ -34,13 +34,12 @@ const theme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        root: {
-          boxShadow:
-            '0 1px 2px 0 rgba(0, 0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0, 0.15)',
+        contained: ({ theme }) => ({
+          backgroundColor: theme.palette.primary.dark,
           '&:hover': {
-            backgroundColor: '#257e9d',
+            backgroundColor: '#023047',
           },
-        },
+        }),
       },
     },
     MuiTypography: {
@@ -58,7 +57,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#219EBC',
-      dark: '#023047',
+      dark: '#034160',
       light: '#8ECAE6',
     },
     secondary: {
