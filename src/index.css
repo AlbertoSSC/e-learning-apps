@@ -1,5 +1,10 @@
 @import './styles/normalizer.module.css';
 
+@font-face {
+  font-family: 'handDrawFont';
+  src: url('/src/assets/fonts/NorthblueRegular-gxgK3.ttf') format('truetype');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

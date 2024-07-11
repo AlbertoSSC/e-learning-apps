@@ -9,6 +9,7 @@ import { useActivitiesContext } from '@/core/providers/activities/activitiesCont
 
 import * as innerClasse from './activities-pod.styles';
 import { CongratsComponent } from './components/congrats.component';
+import { Typography } from '@mui/material';
 
 export const ActivitiesPod = () => {
   const {
@@ -36,7 +37,9 @@ export const ActivitiesPod = () => {
         totalActivities={totalActivitiesContext}
         activitiesCompleted={totalCompletedActivitiesContext}
       />
-      <h1>e-Learning Apps</h1>
+      <Typography variant="h3" component={'h1'} css={innerClasse.titleStyles}>
+        e-Learning Apps
+      </Typography>
       <header css={innerClasse.headerStyles}>
         <ProfileComponent />
       </header>

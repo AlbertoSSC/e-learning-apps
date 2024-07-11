@@ -12,6 +12,12 @@ declare module '@mui/material/styles/createPalette' {
 }
 
 const theme = createTheme({
+  typography: {
+    h1: {
+      fontFamily: 'handDrawFont',
+    },
+  },
+
   shape: {
     borderRadius: 32,
   },

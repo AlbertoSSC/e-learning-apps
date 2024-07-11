@@ -20,13 +20,13 @@ export const welcomeCard = css`
 export const headerStyles = css`
   display: flex;
   flex-direction: column;
-  max-width: 350px;
 
   text-align: center;
   margin-bottom: 2rem;
 
   > h1 {
-    font-size: 2.5rem;
+    font-size: 4rem;
+    letter-spacing: .1rem;
     padding: 0.5rem;
     margin: 0;
   }
@@ -34,6 +34,7 @@ export const headerStyles = css`
   > h2 {
     font-size: 1.25rem;
     margin: 0;
+    padding-top: 0.8rem;
   }
 `;
 

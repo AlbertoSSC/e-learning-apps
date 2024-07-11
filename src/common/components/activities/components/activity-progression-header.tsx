@@ -2,7 +2,12 @@ import { Typography } from '@mui/material';
 
 import { CircularWithValueLabel } from '@/common/utils';
 
-import { activityContent, circularProgress, contentHeader } from '@/styles';
+import {
+  activityContent,
+  circularProgress,
+  contentHeader,
+  titleHeader,
+} from '@/styles';
 
 interface Props {
   title: string;
@@ -17,8 +22,10 @@ export const ActivityProgressHeader: React.FC<Props> = props => {
 
   return (
     <article css={[activityContent, contentHeader]}>
-      <section>
-        <Typography variant="h5" component={"h4"}>{title}</Typography>
+      <section css={titleHeader}>
+        <Typography variant="h5" component={'h4'}>
+          {title}
+        </Typography>
         <Typography variant="inherit">{subtitle}</Typography>
       </section>
 

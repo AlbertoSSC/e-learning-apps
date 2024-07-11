@@ -65,15 +65,22 @@ export const contentHeader = css`
   justify-content: space-between;
   align-items: center;
 
-  h4 {
+  & h4 {
     color: ${theme.palette.primary.main};
     font-weight: bold;
+    max-width: 45%;
   }
-  p {
+
+  & p {
     padding-top: 0.2rem;
     font-weight: 500;
     line-height: 1.2rem;
+    max-width: 93%;
   }
+`;
+
+export const titleHeader = css`
+  width: 100%;
 `;
 
 export const circularProgress = css`
@@ -102,9 +109,6 @@ export const repeatingButton = css`
   &.MuiButtonBase-root {
     background-color: transparent;
     color: ${theme.palette.primary.main};
-    /* &:hover {
-      background-color: ${theme.palette.secondary.light};
-    } */
   }
 `;
 
@@ -135,8 +139,8 @@ export const activityIcon = css`
 
   width: 100px;
   height: 90px;
-  
-  img {
+
+  & img {
     z-index: 2;
     position: relative;
     object-fit: contain;

@@ -34,14 +34,6 @@ export const liStyles = css`
   padding: 0.2rem;
 `;
 
-export const headerStyles = css`
-  h5 {
-    padding-top: 5px;
-    max-width: 120px;
-    line-height: 1.1;
-  }
-`;
-
 export const activityIconStyles = css`
   top: 5px;
   rotate: 12deg;

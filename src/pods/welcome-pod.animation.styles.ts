@@ -136,12 +136,12 @@ export const animatedStyles = {
     animation: ${slideInRight} 2s 1.2s ease-in-out forwards;
   `,
   textField: css`
-    opacity: 0;
-    animation: ${revealXCenter} 1.5s 1.5s ease-in-out forwards;
+    /* opacity: 0; */
+    /* animation: ${revealXCenter} 1.5s 1.5s ease-in-out forwards; */
   `,
   accordion: css`
     opacity: 0;
-    animation: ${revealY} 1.2s 2.8s ease-in-out forwards;
+    animation: ${revealY} 0.5s 2s ease-in-out forwards;
   `,
   button: css`
     opacity: 0;

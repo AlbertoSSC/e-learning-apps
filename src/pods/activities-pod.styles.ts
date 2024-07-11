@@ -1,3 +1,4 @@
+import theme from '@/styles/themes/customMUI.theme';
 import { css } from '@emotion/react';
 
 export const podArticleStyle = css`
@@ -18,4 +19,13 @@ export const headerStyles = css`
   padding: 1rem;
   width: 100%;
   max-width: 1200px;
+`;
+
+export const titleStyles = css`
+  font-family: 'handDrawFont';
+  font-weight: bold;
+  padding: 1rem;
+  color: ${theme.palette.primary.light};
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
 `;

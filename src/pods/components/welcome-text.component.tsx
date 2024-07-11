@@ -1,4 +1,6 @@
+import theme from '@/styles/themes/customMUI.theme';
 import { css, keyframes } from '@emotion/react';
+import { Typography } from '@mui/material';
 
 const fadeIn = keyframes`
   from {
@@ -36,17 +38,20 @@ const translateYIn = keyframes`
 `;
 
 const welcomeToStyles = css`
+  color: white;
   opacity: 0;
   animation: ${fadeIn} 0.5s ease-in-out forwards;
 `;
 
 const eLearningAppsStyles = css`
+  color: ${theme.palette.primary.main};
   line-height: 0.8;
   opacity: 0;
   animation: ${scaleIn} 0.5s ease-in-out 0.5s forwards;
 `;
 
 const demoStyles = css`
+  color: white;
   opacity: 0;
   animation: ${translateYIn} 4s ease-in-out 2s forwards;
 `;
@@ -54,9 +59,15 @@ const demoStyles = css`
 const WelcomeTitle = () => {
   return (
     <>
-      <h2 css={welcomeToStyles}>Welcome to</h2>
-      <h1 css={eLearningAppsStyles}>e-Learning Apps</h1>
-      <h2 css={demoStyles}>Demo</h2>
+      <Typography variant="h2" css={welcomeToStyles}>
+        Welcome to
+      </Typography>
+      <Typography variant="h1" css={eLearningAppsStyles}>
+        e-Learning Apps
+      </Typography>
+      <Typography variant="h2" css={demoStyles}>
+        Demo
+      </Typography>
     </>
   );
 };

@@ -83,7 +83,7 @@ export const ListenAndWriteComponent: React.FC<Props> = props => {
       </section>
 
       <section css={activityContainer}>
-        <header css={[activityHeader, innerClasses.headerStyles]}>
+        <header css={activityHeader}>
           <ActivityProgressHeader
             title="Escuchar y escribir"
             subtitle="Reproduce los audios y completa los campos con el texto correspondiente."
