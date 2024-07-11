@@ -75,27 +75,45 @@ export const WelcomePod = () => {
         <WelcomeTitle />
       </header>
 
-      <Paper css={[activityContainer, innerClasses.welcomeCard, animatedStyles.paper]}>
-        <Typography variant="h6">Your Profile</Typography>
+      <Paper
+        css={[
+          activityContainer,
+          innerClasses.welcomeCard,
+          animatedStyles.paper,
+        ]}
+      >
+        <Typography variant="h6" component={'h1'}>
+          Your Profile
+        </Typography>
 
         <Divider sx={{ width: '50%' }} />
 
         <div css={innerClasses.avatarContainer}>
           <ArrowBackIosNewIcon
             onClick={handlePrevAvatar}
-            css={[innerClasses.arrowIconStyles(isPrevDisable), animatedStyles.arrowLeft]}
+            css={[
+              innerClasses.arrowIconStyles(isPrevDisable),
+              animatedStyles.arrowLeft,
+            ]}
           />
           <Avatar
             src={getAvatarImages[avatarSelected]}
+            alt="avatar selected"
             css={[innerClasses.avatarStyles, animatedStyles.avatar]}
           />
           <ArrowForwardIosIcon
             onClick={handleNextAvatar}
-            css={[innerClasses.arrowIconStyles(isNextDisable), animatedStyles.arrowRight]}
+            css={[
+              innerClasses.arrowIconStyles(isNextDisable),
+              animatedStyles.arrowRight,
+            ]}
           />
         </div>
 
         <TextField
+          id="input-user-name"
+          label="input-user-name"
+          hiddenLabel
           focused
           inputProps={{ maxLength: 14 }}
           variant="filled"
@@ -104,7 +122,9 @@ export const WelcomePod = () => {
           onChange={e => handleInputChange(e)}
         />
 
-        <Accordion css={[innerClasses.accordionStyles, animatedStyles.accordion]}>
+        <Accordion
+          css={[innerClasses.accordionStyles, animatedStyles.accordion]}
+        >
           <AccordionSummary
             id="panel-header"
             aria-controls="panel-content"

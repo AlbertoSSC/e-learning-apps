@@ -55,8 +55,12 @@ export const ProfileComponent = () => {
           variant="square"
         />
         <div css={innerClasses.userStyles}>
-          <Typography variant="h6" component={"h3"} css={innerClasses.userNameStyles}>
-            {userNameInput}
+          <Typography
+            variant="h6"
+            component={'h3'}
+            css={innerClasses.userNameStyles}
+          >
+            {userNameInput || 'Invitado'}
           </Typography>
         </div>
       </section>

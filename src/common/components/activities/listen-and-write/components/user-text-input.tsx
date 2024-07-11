@@ -32,6 +32,8 @@ export const UserTextInput: React.FC<Props> = props => {
 
   return (
     <TextField
+      id={`userInput${inputIndex}`}
+      label={`userInput${inputIndex}`}
       focused
       hiddenLabel
       size="small"
@@ -39,7 +41,6 @@ export const UserTextInput: React.FC<Props> = props => {
       aria-label={`text input ${inputIndex}`}
       variant="filled"
       type="text"
-      id={`userInput${inputIndex}`}
       value={inputValues[inputIndex]}
       onChange={handleNewInput}
       error={isCorrectAnswer === false}
@@ -47,6 +48,11 @@ export const UserTextInput: React.FC<Props> = props => {
       sx={{
         '& .MuiFormHelperText-root': {
           color: isCorrectAnswer === false ? 'error' : 'primary',
+        },
+        '&.MuiFormControl-root': {
+          '& .MuiInputLabel-root': {
+            color: 'transparent',
+          },
         },
       }}
     />

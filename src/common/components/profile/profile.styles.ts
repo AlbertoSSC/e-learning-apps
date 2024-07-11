@@ -10,6 +10,7 @@ export const progressContainer = css`
   }
 
   width: 100%;
+  max-width: 1200px;
 
   border-radius: 24px;
   padding: 0.5rem;
@@ -53,7 +54,7 @@ export const userStyles = css`
 
 export const userNameStyles = css`
   font-weight: bold;
-  color: ${theme.palette.greyColor.main};
+  color: ${theme.palette.primary.dark};
   line-height: 1rem;
   padding-block: 0.5rem 0;
 

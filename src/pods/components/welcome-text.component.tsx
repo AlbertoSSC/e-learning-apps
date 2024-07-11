@@ -37,18 +37,18 @@ const translateYIn = keyframes`
 
 const welcomeToStyles = css`
   opacity: 0;
-  animation: ${fadeIn} 1s ease-in-out forwards;
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
 `;
 
 const eLearningAppsStyles = css`
   line-height: 0.8;
   opacity: 0;
-  animation: ${scaleIn} 1s ease-in-out 0.5s forwards;
+  animation: ${scaleIn} 0.5s ease-in-out 0.5s forwards;
 `;
 
 const demoStyles = css`
   opacity: 0;
-  animation: ${translateYIn} 2s ease-in-out 1.5s forwards;
+  animation: ${translateYIn} 4s ease-in-out 2s forwards;
 `;
 
 const WelcomeTitle = () => {

@@ -48,6 +48,9 @@ export const startButton = css`
 export const textFieldStyles = css`
   &.MuiFormControl-root {
     width: 80%;
+    & .MuiInputLabel-root {
+      color: transparent;
+    }
   }
 
   input {

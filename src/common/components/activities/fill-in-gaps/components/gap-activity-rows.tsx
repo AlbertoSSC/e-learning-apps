@@ -29,13 +29,14 @@ export const GapActivityRow: React.FC<Props> = ({
           {index < item.gaps.length && (
             <TextField
               css={innerClasses.inputWidth}
+              id={`gap-input-${item.id}-${index}`}
+              label={`gap-input-${item.id}-${index}`}
               hiddenLabel
               size="small"
               focused
               autoComplete="off"
               variant="filled"
               type="text"
-              id={`gap-input-${item.id}-${index}`}
               value={inputsValues[index] || ''}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setInputsValues(prev => {

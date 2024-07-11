@@ -17,4 +17,5 @@ export const headerStyles = css`
   justify-content: center;
   padding: 1rem;
   width: 100%;
+  max-width: 1200px;
 `;

@@ -16,6 +16,9 @@ export const inputWidth = css`
 
   &.MuiFormControl-root {
     vertical-align: baseline;
+    & .MuiInputLabel-root {
+      color: transparent;
+    }
   }
 `;
 
